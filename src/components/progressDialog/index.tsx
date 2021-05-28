@@ -5,7 +5,7 @@ import styles from './styles';
 
 export type Props = {
   visible: boolean;
-  label: string;
+  label?: string;
 };
 
 const ProgressDialog: React.FC<Props> = ({visible, label}): JSX.Element => {
