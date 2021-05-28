@@ -8,7 +8,7 @@ export type Props = {
   children: ReactNode;
   noScroll?: boolean;
   backgroundColor?: string;
-  verticalHeight: number;
+  verticalHeight?: number;
 };
 
 const Container: React.FC<Props> = ({
