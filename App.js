@@ -1,15 +1,131 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import 'react-native-gesture-handler';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  Linking,
+  BackHandler,
+  LogBox,
+  SafeAreaView,
+  StyleSheet,
+} from 'react-native';
+
+import Icon from './src/components/icon/index';
+import ProgressDialog from './src/components/progressDialog/index';
+
+import Orientation from 'react-native-orientation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
-const App = () => {
+// Views
+import routes from './src/routes';
+import InitialView from './src/screens/initial/initial';
+import HomeView from './src/screens/home/home';
+
+import axios from 'axios';
+import {URL} from './src/constants/ngrok';
+
+const Tab = createBottomTabNavigator()
+const Stack = createStackNavigator();
+
+const styles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1,
+    position: 'relative',
+  },
+  tabLabelStyle: {
+    marginTop: 4,
+    fontSize: 12,
+  },
+  tabStyle: {
+    height: 60,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tabIconStyle: {
+    position: 'relative',
+  },
+  tabTabStyle: {
+    paddingVertical: 8,
+  },
+});
+
+const HomeTabs = props => {
+  const {navigation} = props;
+
+  const handleUrl = (url = '') => {
+    if (!url) {
+      return;
+    }
+    const path = url.replace(/.*?:\/\//g, '');
+    const [routeName] = path.split('/');
+    if (routeName === 'home') {
+      navigation.navigate(routes.home, {});
+    }
+  };
+
+  useEffect(() => {
+    LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
+    Orientation.lockToPortrait();
+    Linking.getInitialURL().then(url => handleUrl(url));
+    Linking.addEventListener('url', e => handleUrl(e.url));
+    return () => {
+      Linking.removeAllListeners('url');
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <View>
-      <Text>Hello</Text>
-    </View>
+    <Tab.Navigator
+      initialRouteName={routes.inicio}
+      backBehavior="order"
+      tabBarOptions={{
+        showLabel: true,
+        keyboardHidesTabBar: true,
+        labelStyle: styles.tabLabelStyle,
+        style: styles.tabStyle,
+        iconStyle: styles.tabIconStyle,
+        tabStyle: styles.tabTabStyle,
+        activeTintColor: '#FF8328',
+      }}>
+      <Tab.Screen
+        name={routes.home}
+        component={HomeView}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: p => <Icon {...p} name="home" size={30} />,
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
+
+const App = () => {
+  const [previousRouteName, setPreviousRouteName] = useState('');
+
+  const onStateChange = async params => {
+    const currentRouteName = params.routes[params.index].name.toUpperCase();
+    if (currentRouteName !== previousRouteName) {
+      setPreviousRouteName(currentRouteName);
+    }
+  };
+
+  return (
+    <SafeAreaView style={styles.safeAreaView}>
+      <NavigationContainer onStateChange={onStateChange}>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+          initialRouteName={routes.home}>
+          <Stack.Screen name={routes.initial} component={InitialView} />
+          <Stack.Screen name={routes.home} component={HomeTabs} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaView>
   );
 };
 
