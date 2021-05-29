@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useReducer, useMemo} from 'react';
 import {
   View,
   Text,
@@ -12,6 +12,13 @@ import {
 
 import Icon from './src/components/icon/index';
 import ProgressDialog from './src/components/progressDialog/index';
+
+import {
+  statusReducer,
+  StatusContext,
+  initialStatus,
+} from './src/services/context';
+import {VISIBLE, HIDDEN} from './src/constants/index';
 
 import Orientation from 'react-native-orientation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -27,7 +34,7 @@ import HomeView from './src/screens/home/home';
 import axios from 'axios';
 import {URL} from './src/constants/ngrok';
 
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const styles = StyleSheet.create({
@@ -106,6 +113,29 @@ const HomeTabs = props => {
 const App = () => {
   const [previousRouteName, setPreviousRouteName] = useState('');
 
+  const [status, dispatchStatus] = useReducer(statusReducer, initialStatus);
+
+  const statusContext = useMemo(
+    () => ({
+      showProgressDialog: (label = '') =>
+        dispatchStatus({type: VISIBLE, label}),
+      hideProgressDialog: () => dispatchStatus({type: HIDDEN}),
+    }),
+    [],
+  );
+
+  //User can't go back during progressDialog
+  useEffect(() => {
+    let backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      () => status.visible,
+    );
+
+    return () => {
+      backHandler.remove();
+    };
+  }, [status.visible]);
+
   const onStateChange = async params => {
     const currentRouteName = params.routes[params.index].name.toUpperCase();
     if (currentRouteName !== previousRouteName) {
@@ -116,14 +146,17 @@ const App = () => {
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <NavigationContainer onStateChange={onStateChange}>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-          initialRouteName={routes.home}>
-          <Stack.Screen name={routes.initial} component={InitialView} />
-          <Stack.Screen name={routes.home} component={HomeTabs} />
-        </Stack.Navigator>
+        <StatusContext.Provider value={statusContext}>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+            }}
+            initialRouteName={routes.initial}>
+            <Stack.Screen name={routes.initial} component={InitialView} />
+            <Stack.Screen name={routes.home} component={HomeTabs} />
+          </Stack.Navigator>
+        </StatusContext.Provider>
+        <ProgressDialog visible={status.visible} label={status.label} />
       </NavigationContainer>
     </SafeAreaView>
   );
