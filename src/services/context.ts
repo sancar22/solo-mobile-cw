@@ -1,22 +1,22 @@
 import {createContext} from 'react';
 import {VISIBLE, HIDDEN} from '../constants/index';
+import {StatCtx, ActionCtx, InitialStatus} from '../interfaces/index';
 
-const initialStatus = {
+const initialStatus: InitialStatus = {
   visible: false,
   label: '',
 };
 
-const StatusContext = createContext({
-  showProgressDialog: (label = '') => {},
+const StatusContext = createContext<StatCtx>({
+  showProgressDialog: () => {},
   hideProgressDialog: () => {},
   ...initialStatus,
 });
 
-const statusReducer = (prevState, action) => {
+const statusReducer = (prevState: InitialStatus, action: ActionCtx) => {
   switch (action.type) {
     case VISIBLE:
       return {
-        ...prevState,
         visible: true,
         label: action.label,
       };
