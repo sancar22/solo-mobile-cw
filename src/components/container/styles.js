@@ -3,7 +3,7 @@ import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   mainView: {
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.white,
     flex: 1,
   },
   view: {
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     alignSelf: 'flex-start',
     position: 'absolute',
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 1,

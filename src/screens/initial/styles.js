@@ -3,6 +3,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,12 +22,12 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   signUp: {
-    color: 'rgba(220, 166, 239, 1)',
+    color: colors.initialLinkColors,
     width: 120,
     marginLeft: 5,
   },
   noAccountText: {
-    color: '#D3D3D3',
+    color: colors.noAccColor,
   },
 });
 export default styles;

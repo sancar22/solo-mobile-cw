@@ -3,6 +3,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   body: {
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   containerStyles: {
-    backgroundColor: 'rgba(72, 59, 96, 0.7)',
+    backgroundColor: colors.inputBgColor,
     borderRadius: 20,
     marginBottom: 20,
   },
@@ -29,11 +30,11 @@ const styles = StyleSheet.create({
   },
   forgotPW: {
     textAlign: 'right',
-    color: 'rgba(220, 166, 239, 1)',
+    color: colors.initialLinkColors,
     width: 200,
   },
   loginBtn: {
-    backgroundColor: '#B350D6',
+    backgroundColor: colors.initialBtnColor,
     marginRight: 'auto',
     marginLeft: 'auto',
     borderRadius: 30,
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   loginBtnTxt: {
-    color: '#fff',
+    color: colors.white,
     fontSize: 18,
     fontWeight: 'bold',
   },

@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get('screen').height,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: colors.bgColorProgress,
     zIndex: 99,
   },
   container: {
@@ -20,12 +20,10 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   title: {
-    color: colors.textColorDark,
     fontWeight: 'bold',
     fontSize: 18,
   },
   text: {
-    color: colors.textColor,
     fontSize: 16,
     marginLeft: 10,
   },

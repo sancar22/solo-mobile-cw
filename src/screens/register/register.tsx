@@ -5,9 +5,8 @@ import Container from '../../components/container/container';
 import styles from './styles';
 import colors from '../../constants/colors';
 import AuthService from '../../services/auth';
-import routes from '../../routes';
 
-const InitialView = ({navigation}): JSX.Element => {
+const RegisterView = (): JSX.Element => {
   const handleLogin = async (
     email: string,
     password: string,
@@ -18,31 +17,18 @@ const InitialView = ({navigation}): JSX.Element => {
     }
   };
   const handleSignUpRoute = (): void => {
-    navigation.navigate(routes.register);
+    console.log('handle sign up route');
   };
   const handlePassForgotRoute = (): void => {
     console.log('handling password forgot route');
   };
   return (
     <Container backgroundColor={colors.initialBgColor} verticalHeight={0}>
-      <View style={styles.container}>
-        <Image
-          style={styles.matrixImg}
-          source={require('../../assets/images/matrix.png')}
-        />
-        <Login
-          onSubmit={handleLogin}
-          handlePassForgotRoute={handlePassForgotRoute}
-        />
-        <View style={styles.signUpContainer}>
-          <Text style={styles.noAccountText}>Don't have an account yet?</Text>
-          <TouchableOpacity onPress={handleSignUpRoute}>
-            <Text style={styles.signUp}>SIGN UP HERE</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <TouchableOpacity>
+        <Image source={require('../../assets/icons/back-arrow.png')} />
+      </TouchableOpacity>
     </Container>
   );
 };
 
-export default InitialView;
+export default RegisterView;
