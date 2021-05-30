@@ -1,4 +1,4 @@
-export interface StatCtx {
+export interface StatusCtx {
   visible: boolean;
   label: string;
   showProgressDialog(label?: string): void;
@@ -10,7 +10,20 @@ export interface InitialStatus {
   label: string;
 }
 
-export interface ActionCtx {
+export interface ActionStatus {
   type: string;
   label: string;
+}
+
+export interface StateCtx {
+  updateUser(user: any): void;
+}
+
+export interface InitialState {
+  user: any;
+}
+
+export interface ActionState {
+  type: string;
+  user?: any;
 }

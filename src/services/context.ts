@@ -1,19 +1,31 @@
 import {createContext} from 'react';
-import {VISIBLE, HIDDEN} from '../constants/index';
-import {StatCtx, ActionCtx, InitialStatus} from '../interfaces/index';
+import {VISIBLE, HIDDEN, USER} from '../constants/index';
+import {
+  StatusCtx,
+  ActionStatus,
+  InitialStatus,
+  StateCtx,
+  ActionState,
+  InitialState,
+} from '../interfaces/index';
+
+// Status Context for progressDialog
 
 const initialStatus: InitialStatus = {
   visible: false,
   label: '',
 };
 
-const StatusContext = createContext<StatCtx>({
+const StatusContext = createContext<StatusCtx>({
   showProgressDialog: () => {},
   hideProgressDialog: () => {},
   ...initialStatus,
 });
 
-const statusReducer = (prevState: InitialStatus, action: ActionCtx) => {
+const statusReducer = (
+  prevState: InitialStatus,
+  action: ActionStatus,
+): InitialStatus => {
   switch (action.type) {
     case VISIBLE:
       return {
@@ -30,4 +42,37 @@ const statusReducer = (prevState: InitialStatus, action: ActionCtx) => {
   }
 };
 
-export {StatusContext, statusReducer, initialStatus};
+// State Context for application
+
+const initialState: InitialState = {
+  user: {},
+};
+
+const StateContext = createContext<StateCtx>({
+  updateUser: () => {},
+  ...initialState,
+});
+
+const stateReducer = (
+  prevState: InitialState,
+  action: ActionState,
+): InitialState => {
+  switch (action.type) {
+    case USER:
+      return {
+        ...prevState,
+        user: action.user,
+      };
+    default:
+      return prevState;
+  }
+};
+
+export {
+  StatusContext,
+  statusReducer,
+  initialStatus,
+  StateContext,
+  stateReducer,
+  initialState,
+};

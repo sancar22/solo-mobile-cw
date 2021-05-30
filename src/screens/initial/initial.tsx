@@ -6,7 +6,6 @@ import {StatCtx} from '../../interfaces/index';
 const InitialView = (): JSX.Element => {
   const {showProgressDialog, hideProgressDialog} =
     useContext<StatCtx>(StatusContext);
-
   return (
     <View>
       <Text>Initial View</Text>

@@ -17,11 +17,14 @@ import {
   statusReducer,
   StatusContext,
   initialStatus,
+  stateReducer,
+  StateContext,
+  initialState,
 } from './src/services/context';
-import {VISIBLE, HIDDEN} from './src/constants/index';
+import {VISIBLE, HIDDEN, USER} from './src/constants/index';
 
 import Orientation from 'react-native-orientation';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -114,6 +117,7 @@ const App = () => {
   const [previousRouteName, setPreviousRouteName] = useState('');
 
   const [status, dispatchStatus] = useReducer(statusReducer, initialStatus);
+  const [state, dispatchState] = useReducer(stateReducer, initialState);
 
   const statusContext = useMemo(
     () => ({
@@ -122,6 +126,14 @@ const App = () => {
       hideProgressDialog: () => dispatchStatus({type: HIDDEN}),
     }),
     [],
+  );
+
+  const stateContext = useMemo(
+    () => ({
+      updateUser: user => dispatchState({type: USER, user}),
+      ...state,
+    }),
+    [state],
   );
 
   //User can't go back during progressDialog
@@ -136,6 +148,17 @@ const App = () => {
     };
   }, [status.visible]);
 
+  // App initialization...
+  const initializeApp = async () => {
+    const user = JSON.parse(await SecureStore.getItemAsync(USER));
+    // if (user) {
+    //   dispatchState({type: USER, user: JSON.parse(user)});
+    // }
+  };
+  useEffect(() => {
+    initializeApp();
+  }, []);
+
   const onStateChange = async params => {
     const currentRouteName = params.routes[params.index].name.toUpperCase();
     if (currentRouteName !== previousRouteName) {
@@ -147,14 +170,16 @@ const App = () => {
     <SafeAreaView style={styles.safeAreaView}>
       <NavigationContainer onStateChange={onStateChange}>
         <StatusContext.Provider value={statusContext}>
-          <Stack.Navigator
-            screenOptions={{
-              headerShown: false,
-            }}
-            initialRouteName={routes.initial}>
-            <Stack.Screen name={routes.initial} component={InitialView} />
-            <Stack.Screen name={routes.home} component={HomeTabs} />
-          </Stack.Navigator>
+          <StateContext.Provider value={stateContext}>
+            <Stack.Navigator
+              screenOptions={{
+                headerShown: false,
+              }}
+              initialRouteName={routes.initial}>
+              <Stack.Screen name={routes.initial} component={InitialView} />
+              <Stack.Screen name={routes.home} component={HomeTabs} />
+            </Stack.Navigator>
+          </StateContext.Provider>
         </StatusContext.Provider>
         <ProgressDialog visible={status.visible} label={status.label} />
       </NavigationContainer>
