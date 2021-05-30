@@ -39,6 +39,7 @@ const Login: React.FC<Props> = ({
         inputContainerStyle={styles.inputStylesCont}
         inputStyle={{color: 'gray'}}
         style={{fontSize: 14}}
+        autoCapitalize="none"
       />
       <View
         style={{

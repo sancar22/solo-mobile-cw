@@ -12,16 +12,13 @@ const InitialView = ({navigation}): JSX.Element => {
     email: string,
     password: string,
   ): Promise<void> => {
-    const {serverRes, error} = await AuthService.handleLogin(email, password);
+    const {serverRes, error} = await AuthService.handleLogin(
+      email.trim().toLowerCase(),
+      password.trim(),
+    );
     if (error) {
       Alert.alert(serverRes);
     }
-  };
-  const handleSignUpRoute = (): void => {
-    navigation.navigate(routes.register);
-  };
-  const handlePassForgotRoute = (): void => {
-    console.log('handling password forgot route');
   };
   return (
     <Container backgroundColor={colors.initialBgColor} verticalHeight={0}>
@@ -32,11 +29,12 @@ const InitialView = ({navigation}): JSX.Element => {
         />
         <Login
           onSubmit={handleLogin}
-          handlePassForgotRoute={handlePassForgotRoute}
+          handlePassForgotRoute={() => navigation.navigate(routes.forgot)}
         />
         <View style={styles.signUpContainer}>
           <Text style={styles.noAccountText}>Don't have an account yet?</Text>
-          <TouchableOpacity onPress={handleSignUpRoute}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(routes.register)}>
             <Text style={styles.signUp}>SIGN UP HERE</Text>
           </TouchableOpacity>
         </View>

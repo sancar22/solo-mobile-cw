@@ -12,21 +12,5 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 20,
   },
-  loginContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginRight: 'auto',
-    marginLeft: 'auto',
-    justifyContent: 'center',
-    marginTop: 30,
-  },
-  login: {
-    color: colors.initialLinkColors,
-    width: 50,
-    marginLeft: 5,
-  },
-  accountText: {
-    color: colors.noAccColor,
-  },
 });
 export default styles;

@@ -34,6 +34,7 @@ import routes from './src/routes';
 import InitialView from './src/screens/initial/initial';
 import HomeView from './src/screens/home/home';
 import RegisterView from './src/screens/register/register';
+import PWForgotView from './src/screens/pwforgot/pwforgot';
 
 import axios from 'axios';
 import {URL} from './src/constants/ngrok';
@@ -180,6 +181,7 @@ const App = () => {
               <Stack.Screen name={routes.home} component={HomeTabs} />
               <Stack.Screen name={routes.initial} component={InitialView} />
               <Stack.Screen name={routes.register} component={RegisterView} />
+              <Stack.Screen name={routes.forgot} component={PWForgotView} />
             </Stack.Navigator>
           </StateContext.Provider>
         </StatusContext.Provider>
