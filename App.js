@@ -150,7 +150,7 @@ const App = () => {
 
   // App initialization...
   const initializeApp = async () => {
-    const user = JSON.parse(await SecureStore.getItemAsync(USER));
+    await SecureStore.deleteItemAsync(USER);
     // if (user) {
     //   dispatchState({type: USER, user: JSON.parse(user)});
     // }
