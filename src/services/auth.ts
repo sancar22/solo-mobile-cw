@@ -33,9 +33,16 @@ const AuthService = () => {
     );
   };
 
+  const handlePWForgot = async (
+    email: string,
+  ): Promise<CustomResponse<any>> => {
+    return await customFetch<any>('auth/forgotPW', 'POST', {email}, config);
+  };
+
   return {
     handleLogin,
     handleRegister,
+    handlePWForgot,
   };
 };
 

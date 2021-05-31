@@ -26,7 +26,10 @@ const RegisterView: React.FC<Props> = ({navigation}): JSX.Element => {
     if (error) {
       Alert.alert(serverRes);
     } else {
-      Alert.alert(serverRes.data);
+      Alert.alert(
+        serverRes.data,
+        'An email was sent in order to verify your account!',
+      );
       navigation.reset({
         index: 0,
         routes: [{name: routes.initial}],
