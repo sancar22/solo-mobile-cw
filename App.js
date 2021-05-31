@@ -35,9 +35,12 @@ import RegisterView from './src/screens/register/register';
 import PWForgotView from './src/screens/pwforgot/pwforgot';
 import PWCodeView from './src/screens/pwcode/pwcode';
 import PWChangeView from './src/screens/pwchange/pwchange';
+import CourseProgressView from './src/screens/courseprogress/courseprogress';
+import SettingsView from './src/screens/settings/settings';
 
 import axios from 'axios';
 import {URL} from './src/constants/ngrok';
+import colors from './src/constants/colors';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -101,14 +104,30 @@ const HomeTabs = props => {
         style: styles.tabStyle,
         iconStyle: styles.tabIconStyle,
         tabStyle: styles.tabTabStyle,
-        activeTintColor: '#FF8328',
+        activeTintColor: colors.black,
       }}>
       <Tab.Screen
         name={routes.home}
         component={HomeView}
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: p => <Icon {...p} name="home" size={30} />,
+          tabBarIcon: p => <Icon {...p} name="search" size={30} />,
+        }}
+      />
+      <Tab.Screen
+        name={routes.courseprogress}
+        component={CourseProgressView}
+        options={{
+          tabBarLabel: 'Progress',
+          tabBarIcon: p => <Icon {...p} name="books" size={30} />,
+        }}
+      />
+      <Tab.Screen
+        name={routes.settings}
+        component={SettingsView}
+        options={{
+          tabBarLabel: 'Settings',
+          tabBarIcon: p => <Icon {...p} name="cog" size={30} />,
         }}
       />
     </Tab.Navigator>
@@ -177,7 +196,7 @@ const App = () => {
               screenOptions={{
                 headerShown: false,
               }}
-              initialRouteName={routes.initial}>
+              initialRouteName={routes.home}>
               <Stack.Screen name={routes.home} component={HomeTabs} />
               <Stack.Screen name={routes.initial} component={InitialView} />
               <Stack.Screen name={routes.register} component={RegisterView} />

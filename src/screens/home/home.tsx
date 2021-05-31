@@ -1,11 +1,14 @@
-import {View, Text} from 'react-native';
+import {Text, View} from 'react-native';
 import React from 'react';
+import Container from '../../components/container/container';
 
 const HomeView = (): JSX.Element => {
   return (
-    <View>
-      <Text>Home View</Text>
-    </View>
+    <Container verticalHeight={0}>
+      <View>
+        <Text>Home View</Text>
+      </View>
+    </Container>
   );
 };
 

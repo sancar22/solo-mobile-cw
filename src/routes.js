@@ -5,6 +5,8 @@ const routes = {
   forgot: 'forgot',
   pwcode: 'pwcode',
   pwchange: 'pwchange',
+  courseprogress: 'courseprogress',
+  settings: 'settings',
 };
 
 export default routes;

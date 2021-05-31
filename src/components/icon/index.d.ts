@@ -4,7 +4,7 @@ import {ImageProps} from 'react-native';
 declare class Icon extends React.Component<IconProps, any> {}
 
 interface IconProps extends ImageProps {
-  name: 'home';
+  name: 'cog' | 'books' | 'search';
   /**
    * The default value is 20.
    */

@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Image} from 'react-native';
-import Home from '../../assets/icons/Home.png';
+import Cog from '../../assets/icons/cogs.png';
+import Search from '../../assets/icons/search.png';
+import Books from '../../assets/icons/books.png';
 import styles from './styles.js';
 import colors from '../../constants/colors.js';
 
@@ -11,8 +13,14 @@ export default function Icon(props) {
   let source = null;
 
   switch (name) {
-    case 'home':
-      source = Home;
+    case 'cog':
+      source = Cog;
+      break;
+    case 'books':
+      source = Books;
+      break;
+    case 'search':
+      source = Search;
       break;
     default:
       break;
