@@ -7,7 +7,11 @@ import colors from '../../constants/colors';
 import AuthService from '../../services/auth';
 import routes from '../../routes';
 
-const InitialView = ({navigation}): JSX.Element => {
+type Props = {
+  navigation: any;
+};
+
+const InitialView: React.FC<Props> = ({navigation}): JSX.Element => {
   const handleLogin = async (
     email: string,
     password: string,
@@ -18,6 +22,11 @@ const InitialView = ({navigation}): JSX.Element => {
     );
     if (error) {
       Alert.alert(serverRes);
+    } else {
+      navigation.reset({
+        index: 0,
+        routes: [{name: routes.home}],
+      });
     }
   };
   return (

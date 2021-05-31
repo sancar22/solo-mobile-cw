@@ -5,18 +5,32 @@ import Container from '../../components/container/container';
 import styles from './styles';
 import colors from '../../constants/colors';
 import AuthService from '../../services/auth';
-import {emailValidator} from '../../utils';
+import routes from '../../routes';
 
-const RegisterView = ({navigation}): JSX.Element => {
+type Props = {
+  navigation: any;
+};
+
+const RegisterView: React.FC<Props> = ({navigation}): JSX.Element => {
   const handleRegister = async (
     email: string,
     password: string,
     passwordRepeat: string,
   ): Promise<void> => {
     // add rn power meter over here
-    const {serverRes, error} = await AuthService.handleLogin(email, password);
+    const {serverRes, error} = await AuthService.handleRegister(
+      email.trim().toLowerCase(),
+      password.trim(),
+      passwordRepeat.trim(),
+    );
     if (error) {
       Alert.alert(serverRes);
+    } else {
+      Alert.alert(serverRes.data);
+      navigation.reset({
+        index: 0,
+        routes: [{name: routes.initial}],
+      });
     }
   };
   return (

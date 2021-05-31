@@ -5,7 +5,11 @@ import styles from './styles';
 import colors from '../../constants/colors';
 import AuthService from '../../services/auth';
 
-const PWForgotView = ({navigation}): JSX.Element => {
+type Props = {
+  navigation: any;
+};
+
+const PWForgotView: React.FC<Props> = ({navigation}): JSX.Element => {
   const handleLogin = async (
     email: string,
     password: string,

@@ -20,8 +20,22 @@ const AuthService = () => {
     );
   };
 
+  const handleRegister = async (
+    email: string,
+    password: string,
+    passwordRepeat: string,
+  ): Promise<CustomResponse<any>> => {
+    return await customFetch<any>(
+      'auth/register',
+      'POST',
+      {email, password, passwordRepeat},
+      config,
+    );
+  };
+
   return {
     handleLogin,
+    handleRegister,
   };
 };
 
