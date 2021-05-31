@@ -56,11 +56,17 @@ const AuthService = () => {
     password: string,
     passwordRepeat: string,
   ): Promise<CustomResponse<any>> => {
+    const authConfig = {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+        'Content-Type': 'application/json',
+      },
+    };
     return await customFetch<any>(
       'auth/changePW',
       'POST',
-      {jwt, password, passwordRepeat},
-      config,
+      {password, passwordRepeat},
+      authConfig,
     );
   };
 
