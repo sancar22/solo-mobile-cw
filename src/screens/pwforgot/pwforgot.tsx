@@ -7,6 +7,7 @@ import styles from './styles';
 import colors from '../../constants/colors';
 import AuthService from '../../services/auth';
 import {emailValidator} from '../../utils';
+import routes from '../../routes';
 
 type Props = {
   navigation: any;
@@ -20,6 +21,9 @@ const PWForgotView: React.FC<Props> = ({navigation}): JSX.Element => {
     const {serverRes, error} = await AuthService.handlePWForgot(email);
     if (error) {
       Alert.alert(serverRes);
+    } else {
+      Alert.alert('Email sent!', serverRes.data);
+      navigation.navigate(routes.pwcode, {email});
     }
   };
 

@@ -20,8 +20,8 @@ const RegisterView: React.FC<Props> = ({navigation}): JSX.Element => {
     // add rn power meter over here
     const {serverRes, error} = await AuthService.handleRegister(
       email.trim().toLowerCase(),
-      password.trim(),
-      passwordRepeat.trim(),
+      password,
+      passwordRepeat,
     );
     if (error) {
       Alert.alert(serverRes);

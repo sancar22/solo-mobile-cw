@@ -35,6 +35,8 @@ import InitialView from './src/screens/initial/initial';
 import HomeView from './src/screens/home/home';
 import RegisterView from './src/screens/register/register';
 import PWForgotView from './src/screens/pwforgot/pwforgot';
+import PWCodeView from './src/screens/pwcode/pwcode';
+import PWChangeView from './src/screens/pwchange/pwchange';
 
 import axios from 'axios';
 import {URL} from './src/constants/ngrok';
@@ -182,6 +184,8 @@ const App = () => {
               <Stack.Screen name={routes.initial} component={InitialView} />
               <Stack.Screen name={routes.register} component={RegisterView} />
               <Stack.Screen name={routes.forgot} component={PWForgotView} />
+              <Stack.Screen name={routes.pwcode} component={PWCodeView} />
+              <Stack.Screen name={routes.pwchange} component={PWChangeView} />
             </Stack.Navigator>
           </StateContext.Provider>
         </StatusContext.Provider>

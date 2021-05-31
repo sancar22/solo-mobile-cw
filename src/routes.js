@@ -3,6 +3,8 @@ const routes = {
   initial: 'initial',
   register: 'register',
   forgot: 'forgot',
+  pwcode: 'pwcode',
+  pwchange: 'pwchange',
 };
 
 export default routes;

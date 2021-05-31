@@ -18,7 +18,7 @@ const InitialView: React.FC<Props> = ({navigation}): JSX.Element => {
   ): Promise<void> => {
     const {serverRes, error} = await AuthService.handleLogin(
       email.trim().toLowerCase(),
-      password.trim(),
+      password,
     );
     if (error) {
       Alert.alert(serverRes);
