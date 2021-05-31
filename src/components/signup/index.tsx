@@ -4,6 +4,7 @@ import {Input} from 'react-native-elements';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+// @ts-ignore
 import {BarPasswordStrengthDisplay} from 'react-native-password-strength-meter';
 import {emailValidator} from '../../utils';
 

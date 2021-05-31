@@ -1,8 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
@@ -49,6 +46,10 @@ const styles = StyleSheet.create({
   },
   pwNoMatch2: {
     color: colors.initialLinkColors,
+  },
+  minuteText: {
+    color: colors.initialLinkColors,
+    marginBottom: 20,
   },
 });
 export default styles;

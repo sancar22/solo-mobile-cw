@@ -1,8 +1,6 @@
 import 'react-native-gesture-handler';
 import React, {useEffect, useState, useReducer, useMemo} from 'react';
 import {
-  View,
-  Text,
   Linking,
   BackHandler,
   LogBox,

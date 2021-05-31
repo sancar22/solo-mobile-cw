@@ -39,6 +39,9 @@ const PWCodeView: React.FC<Props> = ({navigation, route}): JSX.Element => {
       </TouchableOpacity>
       <View style={styles.body}>
         <CodeGrids onChangeCode={setCode} title="Enter your 6 digit code!" />
+        <Text style={styles.pwNoMatch}>
+          You have one minute before your code expires!
+        </Text>
         <TouchableOpacity
           disabled={code.length !== 6}
           style={{

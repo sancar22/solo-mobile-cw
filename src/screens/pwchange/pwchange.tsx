@@ -5,6 +5,7 @@ import colors from '../../constants/colors';
 import styles from './styles';
 import AuthService from '../../services/auth';
 import Icon from 'react-native-vector-icons/FontAwesome';
+// @ts-ignore
 import {BarPasswordStrengthDisplay} from 'react-native-password-strength-meter';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {Input} from 'react-native-elements';
@@ -64,6 +65,9 @@ const PWChangeView: React.FC<Props> = ({navigation}): JSX.Element => {
         <Image source={require('../../assets/icons/back-arrow.png')} />
       </TouchableOpacity>
       <View style={styles.body}>
+        <Text style={styles.minuteText}>
+          You have 2 minutes to change your password!
+        </Text>
         <View style={styles.pwContainer}>
           <Input
             placeholder="PASSWORD"
