@@ -17,6 +17,7 @@ export interface ActionStatus {
 
 export interface StateCtx {
   updateUser(user: any): void;
+  user: any;
 }
 
 export interface InitialState {

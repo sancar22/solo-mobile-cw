@@ -171,7 +171,6 @@ const App = () => {
 
   // App initialization...
   const initializeApp = async () => {
-    await SecureStore.deleteItemAsync(USER);
     // if (user) {
     //   dispatchState({type: USER, user: JSON.parse(user)});
     // }
@@ -196,7 +195,7 @@ const App = () => {
               screenOptions={{
                 headerShown: false,
               }}
-              initialRouteName={routes.home}>
+              initialRouteName={routes.initial}>
               <Stack.Screen name={routes.home} component={HomeTabs} />
               <Stack.Screen name={routes.initial} component={InitialView} />
               <Stack.Screen name={routes.register} component={RegisterView} />

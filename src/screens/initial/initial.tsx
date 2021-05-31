@@ -1,34 +1,72 @@
 import {View, Image, TouchableOpacity, Text, Alert} from 'react-native';
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import Login from '../../components/login';
 import Container from '../../components/container/container';
 import styles from './styles';
 import colors from '../../constants/colors';
 import AuthService from '../../services/auth';
+import UserService from '../../services/user';
 import routes from '../../routes';
+import * as SecureStore from 'expo-secure-store';
+import {StateContext, StatusContext} from '../../services/context';
+import {StateCtx, StatusCtx} from '../../interfaces';
 
 type Props = {
   navigation: any;
 };
 
 const InitialView: React.FC<Props> = ({navigation}): JSX.Element => {
-  const handleLogin = async (
-    email: string,
-    password: string,
-  ): Promise<void> => {
-    const {serverRes, error} = await AuthService.handleLogin(
-      email.trim().toLowerCase(),
-      password,
-    );
-    if (error) {
-      Alert.alert(serverRes);
+  const {updateUser} = useContext<StateCtx>(StateContext);
+  const {showProgressDialog, hideProgressDialog} =
+    useContext<StatusCtx>(StatusContext);
+
+  const handleGetUserInfo = async () => {
+    const {serverRes: serverResInfo, error: errorInfo} =
+      await UserService.getUserInfo();
+    if (errorInfo) {
+      await SecureStore.deleteItemAsync('session');
+      updateUser({});
+      hideProgressDialog();
     } else {
+      updateUser(serverResInfo.data);
+      hideProgressDialog();
       navigation.reset({
         index: 0,
         routes: [{name: routes.home}],
       });
     }
   };
+
+  const handleLogin = async (
+    email: string,
+    password: string,
+  ): Promise<void> => {
+    showProgressDialog();
+    const {serverRes, error} = await AuthService.handleLogin(
+      email.trim().toLowerCase(),
+      password,
+    );
+    if (error) {
+      Alert.alert(serverRes);
+      hideProgressDialog();
+    } else {
+      await SecureStore.setItemAsync('session', serverRes.data.token);
+      handleGetUserInfo();
+    }
+  };
+
+  useEffect(() => {
+    const checkToken = async () => {
+      showProgressDialog();
+      const sessionToken = await SecureStore.getItemAsync('session');
+      if (sessionToken) {
+        handleGetUserInfo();
+      }
+      hideProgressDialog();
+    };
+    checkToken();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Container backgroundColor={colors.initialBgColor} verticalHeight={0}>
       <View style={styles.container}>

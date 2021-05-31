@@ -21,6 +21,7 @@ const AuthService = () => {
   };
 
   const handleRegister = async (
+    name: string,
     email: string,
     password: string,
     passwordRepeat: string,
@@ -28,7 +29,7 @@ const AuthService = () => {
     return await customFetch<any>(
       'auth/register',
       'POST',
-      {email, password, passwordRepeat},
+      {name, email, password, passwordRepeat},
       config,
     );
   };

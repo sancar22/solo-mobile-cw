@@ -13,12 +13,14 @@ type Props = {
 
 const RegisterView: React.FC<Props> = ({navigation}): JSX.Element => {
   const handleRegister = async (
+    name: string,
     email: string,
     password: string,
     passwordRepeat: string,
   ): Promise<void> => {
     // add rn power meter over here
     const {serverRes, error} = await AuthService.handleRegister(
+      name,
       email.trim().toLowerCase(),
       password,
       passwordRepeat,

@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   },
   accountText: {
     color: colors.noAccColor,
+    marginBottom: 30,
   },
 });
 export default styles;
