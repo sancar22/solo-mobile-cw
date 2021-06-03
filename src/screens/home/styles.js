@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginBottom: 20,
   },
-
   backgroundContainer: {
     width: wp('80%'),
     alignSelf: 'center',

@@ -36,9 +36,22 @@ const CourseService = () => {
     );
   };
 
+  const enrollPremiumCourse = async (
+    course: any,
+  ): Promise<CustomResponse<any>> => {
+    const authConfig = await getAuthConfig();
+    return await customFetch<any>(
+      'course/enroll/premium',
+      'POST',
+      {course},
+      authConfig,
+    );
+  };
+
   return {
     getActiveCourses,
     enrollFreeCourse,
+    enrollPremiumCourse,
   };
 };
 

@@ -37,6 +37,7 @@ import PWCodeView from './src/screens/pwcode/pwcode';
 import PWChangeView from './src/screens/pwchange/pwchange';
 import CourseProgressView from './src/screens/courseprogress/courseprogress';
 import SettingsView from './src/screens/settings/settings';
+import CarouselView from './src/screens/carousel/carousel';
 
 import axios from 'axios';
 import {URL} from './src/constants/ngrok';
@@ -202,6 +203,7 @@ const App = () => {
               <Stack.Screen name={routes.forgot} component={PWForgotView} />
               <Stack.Screen name={routes.pwcode} component={PWCodeView} />
               <Stack.Screen name={routes.pwchange} component={PWChangeView} />
+              <Stack.Screen name={routes.carousel} component={CarouselView} />
             </Stack.Navigator>
           </StateContext.Provider>
         </StatusContext.Provider>

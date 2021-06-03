@@ -7,6 +7,7 @@ const routes = {
   pwchange: 'pwchange',
   courseprogress: 'courseprogress',
   settings: 'settings',
+  carousel: 'carousel',
 };
 
 export default routes;
