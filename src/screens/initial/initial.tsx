@@ -47,7 +47,7 @@ const InitialView: React.FC<Props> = ({navigation}): JSX.Element => {
       password,
     );
     if (error) {
-      Alert.alert(serverRes);
+      Alert.alert(serverRes.data);
       hideProgressDialog();
     } else {
       await SecureStore.setItemAsync('session', serverRes.data.token);

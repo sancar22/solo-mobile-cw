@@ -26,7 +26,7 @@ const PWCodeView: React.FC<Props> = ({navigation, route}): JSX.Element => {
       await SecureStore.setItemAsync('jwt', serverRes.data.token);
       navigation.navigate(routes.pwchange);
     } else {
-      Alert.alert(serverRes);
+      Alert.alert(serverRes.data);
     }
   };
 

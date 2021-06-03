@@ -19,7 +19,7 @@ const customFetch = <T>(
         );
         return {serverRes, error: false};
       } catch (e) {
-        return {serverRes: e.response.data, error: true};
+        return {serverRes: e.response, error: true};
       }
     },
     GET: async function () {
@@ -27,7 +27,7 @@ const customFetch = <T>(
         const serverRes = await axios.get(`${URL}/${path}`, config);
         return {serverRes, error: false};
       } catch (e) {
-        return {serverRes: e.response.data, error: true};
+        return {serverRes: e.response, error: true};
       }
     },
   };

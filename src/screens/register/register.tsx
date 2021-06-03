@@ -26,7 +26,7 @@ const RegisterView: React.FC<Props> = ({navigation}): JSX.Element => {
       passwordRepeat,
     );
     if (error) {
-      Alert.alert(serverRes);
+      Alert.alert(serverRes.data);
     } else {
       Alert.alert(
         serverRes.data,

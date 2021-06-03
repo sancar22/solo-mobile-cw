@@ -20,7 +20,7 @@ const PWForgotView: React.FC<Props> = ({navigation}): JSX.Element => {
   const handlePWForgot = async (): Promise<void> => {
     const {serverRes, error} = await AuthService.handlePWForgot(email);
     if (error) {
-      Alert.alert(serverRes);
+      Alert.alert(serverRes.data);
     } else {
       Alert.alert('Email sent!', serverRes.data);
       navigation.navigate(routes.pwcode, {email});
