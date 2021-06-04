@@ -38,6 +38,7 @@ import PWChangeView from './src/screens/pwchange/pwchange';
 import CourseProgressView from './src/screens/courseprogress/courseprogress';
 import SettingsView from './src/screens/settings/settings';
 import CarouselView from './src/screens/carousel/carousel';
+import PaymentView from './src/screens/payment/payment';
 
 import axios from 'axios';
 import {URL} from './src/constants/ngrok';
@@ -96,7 +97,7 @@ const HomeTabs = props => {
 
   return (
     <Tab.Navigator
-      initialRouteName={routes.inicio}
+      initialRouteName={routes.home}
       backBehavior="order"
       tabBarOptions={{
         showLabel: true,
@@ -204,6 +205,7 @@ const App = () => {
               <Stack.Screen name={routes.pwcode} component={PWCodeView} />
               <Stack.Screen name={routes.pwchange} component={PWChangeView} />
               <Stack.Screen name={routes.carousel} component={CarouselView} />
+              <Stack.Screen name={routes.payment} component={PaymentView} />
             </Stack.Navigator>
           </StateContext.Provider>
         </StatusContext.Provider>

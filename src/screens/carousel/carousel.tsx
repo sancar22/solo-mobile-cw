@@ -18,6 +18,7 @@ import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {StatusCtx, StateCtx} from '../../interfaces';
 import {StateContext, StatusContext} from '../../services/context';
 import CourseService from '../../services/courses';
+
 type Props = {
   navigation: any;
   route: {params: {courseID: string}};
@@ -27,15 +28,6 @@ type RenderCarousel = {
   index: number;
   item: any;
 };
-
-// function findWithAttr(array, attr, value) {
-//   for (let i = 0; i < array.length; i += 1) {
-//     if (array[i][attr] === value) {
-//       return i;
-//     }
-//   }
-//   return -1;
-// }
 
 function moveToFront(array: any[], condition: any) {
   return array.splice(array.findIndex(condition), 1).concat(array);
@@ -77,19 +69,6 @@ const CarouselView: React.FC<Props> = ({navigation, route}): JSX.Element => {
     }
   };
 
-  // useEffect(() => {
-  //   if (carouselItems.length > 0) {
-  //     const indexCarouselSelected = findWithAttr(
-  //       carouselItems,
-  //       '_id',
-  //       courseID,
-  //     );
-  //     setActiveIndex(indexCarouselSelected);
-  //     carouselRef.current.snapToItem(indexCarouselSelected);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [carouselItems]);
-
   useEffect(() => {
     showProgressDialog();
     getAllActiveCourses();
@@ -123,27 +102,9 @@ const CarouselView: React.FC<Props> = ({navigation, route}): JSX.Element => {
     hideProgressDialog();
   };
 
-  const handleEnrollPremiumCourse = async () => {
-    showProgressDialog();
+  const handleEnrollPremiumCourse = () => {
     const selectedCourse = carouselItems[activeIndex];
-    const {serverRes, error} = await CourseService.enrollPremiumCourse(
-      selectedCourse,
-    );
-    if (!error) {
-      Alert.alert(serverRes.data);
-    }
-    if (serverRes?.status === 401) {
-      await SecureStore.deleteItemAsync('session');
-      updateUser({});
-      navigation.reset({
-        index: 0,
-        routes: [{name: routes.initial}],
-      });
-    }
-    if (error) {
-      Alert.alert(serverRes?.data?.msg);
-    }
-    hideProgressDialog();
+    navigation.navigate(routes.payment, {course: selectedCourse});
   };
 
   const handleEnroll = () => {

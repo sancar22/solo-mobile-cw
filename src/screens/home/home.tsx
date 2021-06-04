@@ -59,23 +59,6 @@ const HomeView: React.FC<Props> = ({navigation}): JSX.Element => {
   };
 
   const handleEnrollment = async (course: any) => {
-    // const {serverRes, error} = await CourseService.enrollFreeCourse(course);
-    // hideProgressDialog();
-    // if (!error) {
-    //   Alert.alert(serverRes.data);
-    //   getAllActiveCourses();
-    // }
-    // if (serverRes?.status === 401) {
-    //   await SecureStore.deleteItemAsync('session');
-    //   updateUser({});
-    //   navigation.reset({
-    //     index: 0,
-    //     routes: [{name: routes.initial}],
-    //   });
-    // }
-    // if (error) {
-    //   Alert.alert(serverRes?.data?.msg);
-    // }
     navigation.navigate(routes.carousel, {courseID: course._id});
   };
   const handleCourseSelection = (course: any) => {

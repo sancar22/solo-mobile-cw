@@ -8,6 +8,7 @@ const routes = {
   courseprogress: 'courseprogress',
   settings: 'settings',
   carousel: 'carousel',
+  payment: 'payment',
 };
 
 export default routes;
