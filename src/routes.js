@@ -9,6 +9,7 @@ const routes = {
   settings: 'settings',
   carousel: 'carousel',
   payment: 'payment',
+  topics: 'topics',
 };
 
 export default routes;

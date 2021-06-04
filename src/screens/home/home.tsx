@@ -90,7 +90,7 @@ const HomeView: React.FC<Props> = ({navigation}): JSX.Element => {
   };
   const handleCourseSelection = (course: any) => {
     if (course.enrolled) {
-      Alert.alert('You are already enrolled in the course');
+      navigation.navigate(routes.topics, {courseID: course._id});
     }
     if (!course.enrolled && course.free) {
       alertWithOptions(
