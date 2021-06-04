@@ -3,7 +3,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import colors from '../../constants/colors';
+import colors, {white} from '../../constants/colors';
 
 const styles = StyleSheet.create({
   body: {
@@ -28,20 +28,62 @@ const styles = StyleSheet.create({
   },
   backgroundContainer: {
     width: wp('80%'),
+    height: 130,
     alignSelf: 'center',
-    borderColor: colors.black,
-    borderWidth: 2,
     zIndex: 10,
     marginBottom: 20,
   },
   backgroundImage: {
-    height: 130,
-    padding: 20,
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
   textBackground: {
     fontSize: 20,
-    color: colors.black,
+    color: colors.white,
     fontWeight: 'bold',
+  },
+  nameLock: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+    paddingTop: 10,
+  },
+  dropDown: {
+    backgroundColor: '#fafafa',
+    width: 200,
+    marginLeft: wp('10%'),
+  },
+  dropDownStyle: {
+    backgroundColor: '#fafafa',
+    width: wp('35%'),
+    marginLeft: wp('10%'),
+  },
+  wholeTextContainer: {
+    display: 'flex',
+    height: '100%',
+    justifyContent: 'space-between',
+  },
+  priceCont: {
+    paddingHorizontal: 10,
+    paddingBottom: 10,
+  },
+  textPrice: {
+    color: colors.white,
+    fontWeight: 'bold',
+  },
+  filterContainer: {
+    width: wp('80%'),
+    alignSelf: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  filterText: {
+    fontWeight: 'bold',
+    marginRight: 10,
   },
 });
 

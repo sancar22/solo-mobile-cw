@@ -81,8 +81,6 @@ const PaymentView: React.FC<Props> = ({navigation, route}): JSX.Element => {
     );
   };
 
-  console.log(creditCardDetails);
-
   const handleCreditCardChange = (v: any) => {
     const {cvc, expiry, number, type} = v.values;
     setCreditCardDetails({cvc, expiry, number, type});
