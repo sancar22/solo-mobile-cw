@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 20,
     paddingVertical: 10,
-    marginBottom: 30,
   },
   noBack: {
     backgroundColor: colors.initialBgColor,
@@ -20,7 +19,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     paddingHorizontal: 20,
     paddingVertical: 10,
-    marginBottom: 30,
   },
 });
 

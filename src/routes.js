@@ -10,6 +10,8 @@ const routes = {
   carousel: 'carousel',
   payment: 'payment',
   topics: 'topics',
+  video: 'video',
+  questions: 'questions',
 };
 
 export default routes;

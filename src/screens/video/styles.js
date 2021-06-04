@@ -1,25 +1,24 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   body: {
     justifyContent: 'center',
     flex: 1,
   },
-  continuarBtn: {
-    backgroundColor: '#964C8B',
+  testBtn: {
+    backgroundColor: '#50D65D',
     marginRight: 'auto',
     marginLeft: 'auto',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    width: '80%',
-    height: 70,
-    marginTop: 30,
+    borderRadius: 30,
+    paddingHorizontal: 40,
+    paddingVertical: 15,
+    marginTop: 50,
   },
-  continuarBtnTxt: {
-    color: '#fff',
+  testBtnTxt: {
+    color: colors.white,
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
 });
 

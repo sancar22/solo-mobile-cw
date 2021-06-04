@@ -24,8 +24,6 @@ const TopicsView: React.FC<Props> = ({navigation, route}): JSX.Element => {
   const {showProgressDialog, hideProgressDialog} =
     useContext<StatusCtx>(StatusContext);
 
-  console.log(topics, 'topiics here');
-
   const getAllTopicsForCourse = async () => {
     showProgressDialog();
     const {serverRes, error} = await TopicsService.getActiveTopics(courseID);
@@ -46,7 +44,9 @@ const TopicsView: React.FC<Props> = ({navigation, route}): JSX.Element => {
     }
   };
 
-  const handleTopicNavigation = (id: string, videoURL: string) => {};
+  const handleTopicNavigation = (id: string, videoURL: string) => {
+    navigation.navigate(routes.video, {id, videoURL});
+  };
 
   useEffect(() => {
     getAllTopicsForCourse();

@@ -40,6 +40,7 @@ import SettingsView from './src/screens/settings/settings';
 import CarouselView from './src/screens/carousel/carousel';
 import PaymentView from './src/screens/payment/payment';
 import TopicsView from './src/screens/topics/topics';
+import VideoView from './src/screens/video/video';
 
 import axios from 'axios';
 import {URL} from './src/constants/ngrok';
@@ -208,6 +209,7 @@ const App = () => {
               <Stack.Screen name={routes.carousel} component={CarouselView} />
               <Stack.Screen name={routes.payment} component={PaymentView} />
               <Stack.Screen name={routes.topics} component={TopicsView} />
+              <Stack.Screen name={routes.video} component={VideoView} />
             </Stack.Navigator>
           </StateContext.Provider>
         </StatusContext.Provider>
