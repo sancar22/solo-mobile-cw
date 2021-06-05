@@ -48,10 +48,21 @@ const CourseService = () => {
     );
   };
 
+  const getMyCourses = async (): Promise<CustomResponse<any>> => {
+    const authConfig = await getAuthConfig();
+    return await customFetch<any>(
+      'course/client-side/myCourses',
+      'GET',
+      '',
+      authConfig,
+    );
+  };
+
   return {
     getActiveCourses,
     enrollFreeCourse,
     enrollPremiumCourse,
+    getMyCourses,
   };
 };
 

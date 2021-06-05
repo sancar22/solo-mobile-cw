@@ -13,6 +13,8 @@ const routes = {
   video: 'video',
   questions: 'questions',
   score: 'score',
+  topicprogress: 'topicprogress',
+  testresults: 'testresults',
 };
 
 export default routes;
