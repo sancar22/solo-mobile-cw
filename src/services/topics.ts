@@ -24,8 +24,34 @@ const TopicService = () => {
     );
   };
 
+  const getTopic = async (id: string): Promise<CustomResponse<any>> => {
+    const authConfig = await getAuthConfig();
+    return await customFetch<any>(
+      `topic/client-side/getTopicById/${id}`,
+      'GET',
+      '',
+      authConfig,
+    );
+  };
+
+  const submitTest = async (
+    responses: any,
+    courseID: string,
+    topicID: string,
+  ): Promise<CustomResponse<any>> => {
+    const authConfig = await getAuthConfig();
+    return await customFetch<any>(
+      'topic/submitTest',
+      'POST',
+      {responses, courseID, topicID},
+      authConfig,
+    );
+  };
+
   return {
     getActiveTopics,
+    getTopic,
+    submitTest,
   };
 };
 

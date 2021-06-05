@@ -12,6 +12,7 @@ const routes = {
   topics: 'topics',
   video: 'video',
   questions: 'questions',
+  score: 'score',
 };
 
 export default routes;

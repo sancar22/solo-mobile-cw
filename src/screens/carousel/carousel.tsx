@@ -122,9 +122,8 @@ const CarouselView: React.FC<Props> = ({navigation, route}): JSX.Element => {
         <ImageBackground
           source={{uri: item.coverImageURL}}
           style={styles.backgroundImage}
-          imageStyle={{borderRadius: 20}}>
-          <Text style={styles.textBackground}>{item.name}</Text>
-        </ImageBackground>
+          imageStyle={{borderRadius: 20}}
+        />
       </View>
     );
   };

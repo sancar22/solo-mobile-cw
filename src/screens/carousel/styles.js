@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     alignSelf: 'center',
     fontWeight: 'bold',
+    color: colors.white,
   },
   enrollBtn: {
     backgroundColor: '#50D65D',

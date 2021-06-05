@@ -1,31 +1,24 @@
-import {View, TouchableOpacity, Text, Alert} from 'react-native';
-import React, {useEffect, useState, useContext} from 'react';
+import {View, TouchableOpacity, Text} from 'react-native';
+import React from 'react';
 
 import Container from '../../components/container/container';
 import styles from './styles';
 import routes from '../../routes';
 import Logo from '../../assets/icons/back-arrow.png';
 import Header from '../../components/header/header';
-import TopicsService from '../../services/topics';
-import {StateContext, StatusContext} from '../../services/context';
-import {StateCtx, StatusCtx} from '../../interfaces';
-import * as SecureStore from 'expo-secure-store';
 import RNVideo from './RNVideo';
 
 type Props = {
   navigation: any;
-  route: {params: {id: string; videoURL: string}};
+  route: {params: {topicID: string; videoURL: string; completed: boolean}};
 };
 
 const VideoView: React.FC<Props> = ({navigation, route}): JSX.Element => {
-  const {id, videoURL} = route.params;
+  const {topicID, videoURL, completed} = route.params;
 
-  const [topics, setTopics] = useState([]);
-  const {updateUser} = useContext<StateCtx>(StateContext);
-  const {showProgressDialog, hideProgressDialog} =
-    useContext<StatusCtx>(StatusContext);
-
-  const handleNavigationQuestions = () => {};
+  const handleNavigationQuestions = () => {
+    navigation.navigate(routes.questions, {topicID});
+  };
 
   return (
     <Container verticalHeight={0}>
@@ -40,7 +33,7 @@ const VideoView: React.FC<Props> = ({navigation, route}): JSX.Element => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity
-        style={styles.testBtn}
+        style={{...styles.testBtn, display: completed ? 'none' : 'flex'}}
         onPress={handleNavigationQuestions}>
         <Text style={styles.testBtnTxt}>Test</Text>
       </TouchableOpacity>

@@ -44,8 +44,12 @@ const TopicsView: React.FC<Props> = ({navigation, route}): JSX.Element => {
     }
   };
 
-  const handleTopicNavigation = (id: string, videoURL: string) => {
-    navigation.navigate(routes.video, {id, videoURL});
+  const handleTopicNavigation = (
+    id: string,
+    videoURL: string,
+    completed: boolean,
+  ) => {
+    navigation.navigate(routes.video, {topicID: id, videoURL, completed});
   };
 
   useEffect(() => {
@@ -56,7 +60,7 @@ const TopicsView: React.FC<Props> = ({navigation, route}): JSX.Element => {
   return (
     <Container verticalHeight={0}>
       <Header onPressBack={navigation.goBack} logoSrc={Logo} />
-      {topics.length > 0 &&
+      {topics.length > 0 ? (
         topics.map(topic => {
           const {name, description, completed, _id, videoURL} = topic;
           return (
@@ -65,14 +69,17 @@ const TopicsView: React.FC<Props> = ({navigation, route}): JSX.Element => {
               <Text style={styles.topicDescription}>{description}</Text>
               <TouchableOpacity
                 style={styles.topicBtn}
-                onPress={() => handleTopicNavigation(_id, videoURL)}>
+                onPress={() => handleTopicNavigation(_id, videoURL, completed)}>
                 <Text style={styles.topicBtnTxt}>
                   {completed ? 'Rewatch Video' : 'Start Topic'}
                 </Text>
               </TouchableOpacity>
             </View>
           );
-        })}
+        })
+      ) : (
+        <Text style={styles.noTopics}>No topics yet!</Text>
+      )}
     </Container>
   );
 };
