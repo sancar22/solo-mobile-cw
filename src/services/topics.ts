@@ -48,10 +48,23 @@ const TopicService = () => {
     );
   };
 
+  const getCompletedTopics = async (
+    id: string,
+  ): Promise<CustomResponse<any>> => {
+    const authConfig = await getAuthConfig();
+    return await customFetch<any>(
+      `topic/client-side/completedTopics/${id}`,
+      'GET',
+      '',
+      authConfig,
+    );
+  };
+
   return {
     getActiveTopics,
     getTopic,
     submitTest,
+    getCompletedTopics,
   };
 };
 

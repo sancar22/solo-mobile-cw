@@ -85,6 +85,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginRight: 10,
   },
+  noContent: {
+    fontSize: 30,
+    alignSelf: 'center',
+    color: 'gray',
+    fontWeight: 'bold',
+    textAlignVertical: 'center',
+    textAlign: 'center',
+  },
 });
 
 export default styles;

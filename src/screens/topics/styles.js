@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     color: 'gray',
     fontWeight: 'bold',
     textAlignVertical: 'center',
+    textAlign: 'center',
   },
 });
 

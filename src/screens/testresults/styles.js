@@ -33,13 +33,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  noContent: {
-    fontSize: 30,
-    alignSelf: 'center',
-    color: 'gray',
-    fontWeight: 'bold',
-    textAlignVertical: 'center',
-    textAlign: 'center',
-  },
 });
 export default styles;

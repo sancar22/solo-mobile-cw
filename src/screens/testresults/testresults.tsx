@@ -12,9 +12,12 @@ import Header from '../../components/header/header';
 import Logo from '../../assets/icons/back-arrow.png';
 type Props = {
   navigation: any;
+  route: {params: {topicID: string; topicName: string}};
 };
 
-const CourseProgressView: React.FC<Props> = ({navigation}): JSX.Element => {
+const TestResultsView: React.FC<Props> = ({navigation, route}): JSX.Element => {
+  const {topicID, topicName} = route.params;
+
   const [userCourses, setUserCourses] = useState<any[]>([]);
 
   const {updateUser} = useContext<StateCtx>(StateContext);
@@ -41,50 +44,18 @@ const CourseProgressView: React.FC<Props> = ({navigation}): JSX.Element => {
     }
   };
 
-  const handleMoreDetails = (courseID: string, courseName: string) => {
-    navigation.navigate(routes.topicprogress, {courseID, courseName});
-  };
-
   useEffect(() => {
     getAllMyActiveCourses();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <Container verticalHeight={0}>
-      <Header logoSrc={Logo} backArrow={false} />
+      <Header logoSrc={Logo} onPressBack={navigation.goBack} />
       <View style={styles.coursesContainer}>
-        <Text style={styles.title}>Course progress</Text>
-        {userCourses.length > 0 ? (
-          userCourses.map((course, index) => {
-            return (
-              <View key={index}>
-                <Text style={styles.courseName}>{course.name}</Text>
-                <Text style={{marginBottom: 20}}>
-                  You have completed {course.topicsCompleted} out of{' '}
-                  {course.numberOfTopics} topics!
-                </Text>
-                <ProgressBar
-                  completed={course.ratioFinished * 100}
-                  toFinish={(1 - course.ratioFinished) * 100}
-                />
-                <TouchableOpacity
-                  style={styles.testBtn}
-                  onPress={() =>
-                    handleMoreDetails(course.courseID, course.name)
-                  }>
-                  <Text style={styles.testBtnTxt}>See More</Text>
-                </TouchableOpacity>
-              </View>
-            );
-          })
-        ) : (
-          <Text style={styles.noContent}>
-            You have no enrolled courses yet!
-          </Text>
-        )}
+        <Text style={styles.title}>Test Results - {topicName}</Text>
       </View>
     </Container>
   );
 };
 
-export default CourseProgressView;
+export default TestResultsView;

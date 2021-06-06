@@ -175,7 +175,7 @@ const HomeView: React.FC<Props> = ({navigation}): JSX.Element => {
             inputContainerStyle={styles.searchInput}
           />
         </View>
-        {filteredCourses.length > 0 &&
+        {filteredCourses.length > 0 ? (
           filteredCourses.map((course, index) => {
             return (
               <TouchableOpacity
@@ -207,7 +207,10 @@ const HomeView: React.FC<Props> = ({navigation}): JSX.Element => {
                 </ImageBackground>
               </TouchableOpacity>
             );
-          })}
+          })
+        ) : (
+          <Text style={styles.noContent}>No courses yet!</Text>
+        )}
       </View>
     </Container>
   );

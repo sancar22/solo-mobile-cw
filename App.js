@@ -43,6 +43,8 @@ import TopicsView from './src/screens/topics/topics';
 import VideoView from './src/screens/video/video';
 import QuestionsView from './src/screens/questions/questions';
 import ScoreView from './src/screens/score/score';
+import TopicProgressView from './src/screens/topicprogress/topicprogress';
+import TestResultsView from './src/screens/testresults/testresults';
 
 import axios from 'axios';
 import {URL} from './src/constants/ngrok';
@@ -214,6 +216,14 @@ const App = () => {
               <Stack.Screen name={routes.video} component={VideoView} />
               <Stack.Screen name={routes.questions} component={QuestionsView} />
               <Stack.Screen name={routes.score} component={ScoreView} />
+              <Stack.Screen
+                name={routes.topicprogress}
+                component={TopicProgressView}
+              />
+              <Stack.Screen
+                name={routes.testresults}
+                component={TestResultsView}
+              />
             </Stack.Navigator>
           </StateContext.Provider>
         </StatusContext.Provider>
