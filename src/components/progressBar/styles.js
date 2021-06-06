@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     height: 5,
   },
   complete: {
-    backgroundColor: '#1FE1C5',
+    backgroundColor: 'rgba(179, 80, 214, 1)',
     height: 5,
     borderRadius: 20,
     position: 'absolute',
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   toFinish: {
-    backgroundColor: 'rgba(31,225,197,0.13)',
+    backgroundColor: 'rgba(179, 80, 214, 0.3)',
     height: 5,
     borderRadius: 20,
     position: 'absolute',

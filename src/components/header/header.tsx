@@ -25,7 +25,7 @@ const Header: React.FC<Props> = ({
       }}>
       {backArrow && (
         <TouchableOpacity onPress={onPressBack}>
-          <Image source={logoSrc} />
+          <Image style={{width: 40, height: 30}} source={logoSrc} />
         </TouchableOpacity>
       )}
       <Image source={logoSrc} />
