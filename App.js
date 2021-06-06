@@ -19,7 +19,7 @@ import {
   StateContext,
   initialState,
 } from './src/services/context';
-import {VISIBLE, HIDDEN, USER} from './src/constants/index';
+import {VISIBLE, HIDDEN, USER, TEST_RESULTS} from './src/constants/index';
 
 import Orientation from 'react-native-orientation';
 import * as SecureStore from 'expo-secure-store';
@@ -160,6 +160,8 @@ const App = () => {
   const stateContext = useMemo(
     () => ({
       updateUser: user => dispatchState({type: USER, user}),
+      updateCurrentTopic: currentTopicResult =>
+        dispatchState({type: TEST_RESULTS, currentTopicResult}),
       ...state,
     }),
     [state],

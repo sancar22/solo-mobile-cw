@@ -23,7 +23,7 @@ const TopicProgressView: React.FC<Props> = ({
 
   const [userCompletedTopics, setUserCompletedTopics] = useState<any[]>([]);
 
-  const {updateUser} = useContext<StateCtx>(StateContext);
+  const {updateUser, updateCurrentTopic} = useContext<StateCtx>(StateContext);
   const {showProgressDialog, hideProgressDialog} =
     useContext<StatusCtx>(StatusContext);
 
@@ -47,8 +47,9 @@ const TopicProgressView: React.FC<Props> = ({
     }
   };
 
-  const handleSeeTestResults = (topicID: string, topicName: string) => {
-    navigation.navigate(routes.testresults, {topicID, topicName});
+  const handleSeeTestResults = (topicUser: any) => {
+    navigation.navigate(routes.testresults);
+    updateCurrentTopic(topicUser);
   };
 
   useEffect(() => {
@@ -68,9 +69,7 @@ const TopicProgressView: React.FC<Props> = ({
                 <Text style={styles.courseName}>{topic.description}</Text>
                 <TouchableOpacity
                   style={styles.testBtn}
-                  onPress={() =>
-                    handleSeeTestResults(topic.topicID, topic.name)
-                  }>
+                  onPress={() => handleSeeTestResults(topic)}>
                   <Text style={styles.testBtnTxt}>Test Results</Text>
                 </TouchableOpacity>
               </View>

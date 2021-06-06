@@ -1,5 +1,5 @@
 import {createContext} from 'react';
-import {VISIBLE, HIDDEN, USER} from '../constants/index';
+import {VISIBLE, HIDDEN, USER, TEST_RESULTS} from '../constants/index';
 import {
   StatusCtx,
   ActionStatus,
@@ -46,10 +46,12 @@ const statusReducer = (
 
 const initialState: InitialState = {
   user: {},
+  currentTopicResult: {},
 };
 
 const StateContext = createContext<StateCtx>({
   updateUser: () => {},
+  updateCurrentTopic: () => {},
   ...initialState,
 });
 
@@ -62,6 +64,11 @@ const stateReducer = (
       return {
         ...prevState,
         user: action.user,
+      };
+    case TEST_RESULTS:
+      return {
+        ...prevState,
+        currentTopicResult: action.currentTopicResult,
       };
     default:
       return prevState;

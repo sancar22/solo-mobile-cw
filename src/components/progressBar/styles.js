@@ -6,37 +6,35 @@ import {
 
 const styles = StyleSheet.create({
   progressBarContainer: {
-    width: wp('85%'),
-    alignSelf: 'center',
-    minHeight: 200,
+    width: '120%',
   },
   wholeProgressBar: {
-    width: wp('85%'),
+    width: '100%',
     display: 'flex',
     flexDirection: 'row',
     alignSelf: 'center',
-    height: 100,
+    height: 5,
   },
   complete: {
     backgroundColor: '#1FE1C5',
-    height: 100,
+    height: 5,
     borderRadius: 20,
     position: 'absolute',
   },
   progress: {
     backgroundColor: 'rgba(31,225,197,0.43)',
-    height: 100,
+    height: 5,
     borderRadius: 20,
     position: 'absolute',
   },
   toFinish: {
     backgroundColor: 'rgba(31,225,197,0.13)',
-    height: 100,
+    height: 5,
     borderRadius: 20,
     position: 'absolute',
   },
   percentageShower: {
-    width: wp('85%'),
+    width: 100,
     alignSelf: 'center',
     minHeight: 100,
     display: 'flex',

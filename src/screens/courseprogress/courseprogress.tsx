@@ -53,28 +53,29 @@ const CourseProgressView: React.FC<Props> = ({navigation}): JSX.Element => {
     <Container verticalHeight={0}>
       <Header logoSrc={Logo} backArrow={false} />
       <View style={styles.coursesContainer}>
-        <Text style={styles.title}>Course progress</Text>
+        <Text style={styles.title}>Course Progress</Text>
         {userCourses.length > 0 ? (
           userCourses.map((course, index) => {
             return (
-              <View key={index}>
-                <Text style={styles.courseName}>{course.name}</Text>
-                <Text style={{marginBottom: 20}}>
-                  You have completed {course.topicsCompleted} out of{' '}
-                  {course.numberOfTopics} topics!
-                </Text>
-                <ProgressBar
-                  completed={course.ratioFinished * 100}
-                  toFinish={(1 - course.ratioFinished) * 100}
+              <TouchableOpacity
+                onPress={() => handleMoreDetails(course.courseID, course.name)}
+                key={index}
+                style={styles.courseContainer}>
+                <Image
+                  style={{width: 100, height: 100}}
+                  source={{uri: course.coverImageURL}}
                 />
-                <TouchableOpacity
-                  style={styles.testBtn}
-                  onPress={() =>
-                    handleMoreDetails(course.courseID, course.name)
-                  }>
-                  <Text style={styles.testBtnTxt}>See More</Text>
-                </TouchableOpacity>
-              </View>
+                <View style={styles.detailsContainer}>
+                  <Text style={styles.courseName}>{course.name}</Text>
+                  <ProgressBar
+                    completed={course.ratioFinished * 100}
+                    toFinish={(1 - course.ratioFinished) * 100}
+                  />
+                  <Text style={styles.completion}>
+                    {course.ratioFinished * 100}% Completed
+                  </Text>
+                </View>
+              </TouchableOpacity>
             );
           })
         ) : (

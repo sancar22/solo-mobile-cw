@@ -17,16 +17,20 @@ export interface ActionStatus {
 
 export interface StateCtx {
   updateUser(user: any): void;
+  updateCurrentTopic(user: any): void;
   user: any;
+  currentTopicResult: any;
 }
 
 export interface InitialState {
   user: any;
+  currentTopicResult: any;
 }
 
 export interface ActionState {
   type: string;
   user?: any;
+  currentTopicResult?: any;
 }
 export interface CustomResponse<T> {
   serverRes: T;
