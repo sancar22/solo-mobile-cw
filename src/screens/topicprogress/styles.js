@@ -3,35 +3,34 @@ import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   coursesContainer: {
-    width: '90%',
+    width: '80%',
     alignSelf: 'center',
     marginBottom: 20,
   },
   title: {
-    textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 26,
     marginBottom: 20,
+    textTransform: 'uppercase',
   },
-  courseName: {
-    marginBottom: 20,
-    fontWeight: 'bold',
+  topicContainer: {
+    backgroundColor: '#F5F5F5',
+    padding: 10,
+  },
+  topicName: {
+    marginBottom: 10,
+    fontWeight: '500',
     fontSize: 20,
+    color: 'rgba(128, 128, 128, 1)',
   },
-  testBtn: {
-    backgroundColor: '#50D65D',
-    marginRight: 'auto',
-    marginLeft: 'auto',
-    borderRadius: 30,
-    paddingHorizontal: 40,
-    paddingVertical: 15,
-    marginTop: 10,
-    marginBottom: 20,
+  topicDescription: {
+    color: 'rgba(128, 128, 128, 1)',
+    fontWeight: '400',
+    marginBottom: 10,
   },
-  testBtnTxt: {
-    color: colors.white,
-    fontSize: 18,
-    fontWeight: 'bold',
+  topicTestResults: {
+    color: 'rgba(75, 219, 62, 1)',
+    fontWeight: '500',
   },
   noContent: {
     fontSize: 30,

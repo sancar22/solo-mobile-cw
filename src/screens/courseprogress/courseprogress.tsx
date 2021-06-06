@@ -61,12 +61,15 @@ const CourseProgressView: React.FC<Props> = ({navigation}): JSX.Element => {
                 onPress={() => handleMoreDetails(course.courseID, course.name)}
                 key={index}
                 style={styles.courseContainer}>
-                <Image
-                  style={{width: 100, height: 100}}
-                  source={{uri: course.coverImageURL}}
-                />
+                <View style={{display: 'flex', justifyContent: 'center'}}>
+                  <Image
+                    style={{width: 100, height: 100}}
+                    source={{uri: course.coverImageURL}}
+                  />
+                </View>
                 <View style={styles.detailsContainer}>
                   <Text style={styles.courseName}>{course.name}</Text>
+                  <Text style={styles.details}>See completed topics</Text>
                   <ProgressBar
                     completed={course.ratioFinished * 100}
                     toFinish={(1 - course.ratioFinished) * 100}

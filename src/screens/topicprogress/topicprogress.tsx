@@ -1,4 +1,4 @@
-import {View, Image, TouchableOpacity, Text, Alert} from 'react-native';
+import {View, TouchableOpacity, Text, Alert} from 'react-native';
 import React, {useEffect, useState, useContext} from 'react';
 import Container from '../../components/container/container';
 import styles from './styles';
@@ -7,7 +7,6 @@ import {StateCtx, StatusCtx} from '../../interfaces';
 import * as SecureStore from 'expo-secure-store';
 import TopicService from '../../services/topics';
 import routes from '../../routes';
-import ProgressBar from '../../components/progressBar';
 import Header from '../../components/header/header';
 import Logo from '../../assets/icons/back-arrow.png';
 type Props = {
@@ -60,19 +59,18 @@ const TopicProgressView: React.FC<Props> = ({
     <Container verticalHeight={0}>
       <Header logoSrc={Logo} onPressBack={navigation.goBack} />
       <View style={styles.coursesContainer}>
-        <Text style={styles.title}>Completed Topics - {courseName}</Text>
+        <Text style={styles.title}>{courseName}</Text>
         {userCompletedTopics.length > 0 ? (
           userCompletedTopics.map((topic, index) => {
             return (
-              <View key={index}>
-                <Text style={styles.courseName}>{topic.name}</Text>
-                <Text style={styles.courseName}>{topic.description}</Text>
-                <TouchableOpacity
-                  style={styles.testBtn}
-                  onPress={() => handleSeeTestResults(topic)}>
-                  <Text style={styles.testBtnTxt}>Test Results</Text>
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity
+                key={index}
+                onPress={() => handleSeeTestResults(topic)}
+                style={styles.topicContainer}>
+                <Text style={styles.topicName}>{topic.name}</Text>
+                <Text style={styles.topicDescription}>{topic.description}</Text>
+                <Text style={styles.topicTestResults}>Test results</Text>
+              </TouchableOpacity>
             );
           })
         ) : (

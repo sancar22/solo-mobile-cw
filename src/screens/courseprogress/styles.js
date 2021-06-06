@@ -26,9 +26,13 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: 'rgba(128, 128, 128, 1)',
   },
+  details: {
+    color: 'rgba(128, 128, 128, 1)',
+    fontWeight: '300',
+  },
   detailsContainer: {
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     flex: 1,
     paddingLeft: 15,
   },
