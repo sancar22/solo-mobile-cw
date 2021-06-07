@@ -1,23 +1,18 @@
-import {View, Text, Image} from 'react-native';
+import {View, Text} from 'react-native';
 import React, {useContext} from 'react';
 import Container from '../../components/container/container';
 import styles from './styles';
-import routes from '../../routes';
 import Header from '../../components/header/header';
 import Logo from '../../assets/icons/back-arrow.png';
 import {StateCtx} from '../../interfaces';
 import {StateContext} from '../../services/context';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import QuestionsView from '../questions/questions';
 import colors from '../../constants/colors';
-
-const CheckIcon = require('../../assets/images/check-icon.ico');
-const CrossIcon = require('../../assets/images/delete-icon.png');
 type Props = {
   navigation: any;
 };
 
-const TestResultsView: React.FC<Props> = ({navigation, route}): JSX.Element => {
+const TestResultsView: React.FC<Props> = ({navigation}): JSX.Element => {
   const {currentTopicResult} = useContext<StateCtx>(StateContext);
 
   const getColor = (response: any, choiceIdx: number) => {

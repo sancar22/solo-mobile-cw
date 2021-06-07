@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
   },
   choices: {
     marginBottom: 10,
+    padding: 10,
   },
   iconContainer: {
     display: 'flex',
