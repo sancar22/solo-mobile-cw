@@ -1,4 +1,4 @@
-import {View, TouchableOpacity, Text, Alert} from 'react-native';
+import {View, TouchableOpacity, Text, Alert, Image} from 'react-native';
 import React, {useEffect, useState, useContext} from 'react';
 import Container from '../../components/container/container';
 import styles from './styles';
@@ -9,6 +9,7 @@ import TopicService from '../../services/topics';
 import routes from '../../routes';
 import Header from '../../components/header/header';
 import Logo from '../../assets/icons/back-arrow.png';
+const CheckIcon = require('../../assets/images/check.png');
 type Props = {
   navigation: any;
   route: {params: {courseID: string; courseName: string}};
@@ -67,9 +68,16 @@ const TopicProgressView: React.FC<Props> = ({
                 key={index}
                 onPress={() => handleSeeTestResults(topic)}
                 style={styles.topicContainer}>
-                <Text style={styles.topicName}>{topic.name}</Text>
-                <Text style={styles.topicDescription}>{topic.description}</Text>
-                <Text style={styles.topicTestResults}>Test results</Text>
+                <View style={styles.imageTitleContainer}>
+                  <Image source={CheckIcon} style={styles.checkIconImage} />
+                  <View>
+                    <Text style={styles.topicName}>{topic.name}</Text>
+                    <Text style={styles.topicDescription}>
+                      {topic.description}
+                    </Text>
+                    <Text style={styles.topicTestResults}>Test results</Text>
+                  </View>
+                </View>
               </TouchableOpacity>
             );
           })

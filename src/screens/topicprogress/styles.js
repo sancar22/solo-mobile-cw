@@ -40,5 +40,14 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     textAlign: 'center',
   },
+  imageTitleContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  checkIconImage: {
+    width: 30,
+    height: 30,
+    marginRight: 10,
+  },
 });
 export default styles;
