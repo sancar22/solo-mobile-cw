@@ -28,12 +28,30 @@ const ScoreView: React.FC<Props> = ({navigation, route}): JSX.Element => {
     <Container verticalHeight={0}>
       <Header backArrow={false} logoSrc={Logo} />
       <View style={styles.scoreContainer}>
-        <Text>{scoreInfo.message}</Text>
-        <Text>
-          You answered {scoreInfo.numberOfCorrectQuestions} out of{' '}
-          {scoreInfo.totalQuestions} questions correctly giving you a score of{' '}
-          {scoreInfo.score}%.
-        </Text>
+        <Text style={styles.title}>Test Summary: </Text>
+        <Text style={styles.scoreInfo}>{scoreInfo.message}</Text>
+        <View style={styles.infoContainer}>
+          <Text style={styles.text}>
+            <Text style={styles.subtext}>Test status:</Text>
+            {'             '}
+            Finished
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.subtext}>Correct answers:</Text>
+            {'    '}
+            {scoreInfo.numberOfCorrectQuestions}
+          </Text>
+          <Text style={styles.text}>
+            <Text style={styles.subtext}>Total questions:</Text>
+            {'      '}
+            {scoreInfo.totalQuestions}
+          </Text>
+          <Text style={{...styles.text, borderBottomWidth: 0}}>
+            <Text style={styles.subtext}>Score:</Text>
+            {'                       '}
+            {scoreInfo.score}%
+          </Text>
+        </View>
       </View>
       <TouchableOpacity style={styles.exitBtn} onPress={handleHomeNavigation}>
         <Text style={styles.exitBtnTxt}>Exit</Text>
