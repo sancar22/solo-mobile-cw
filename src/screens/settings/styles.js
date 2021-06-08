@@ -18,12 +18,13 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '500',
     fontSize: 30,
+    textTransform: 'capitalize',
   },
   emailContainer: {
     color: 'rgba(128, 128, 128, 1)',
     marginBottom: 40,
     marginTop: 30,
-    fontSize: 15,
+    fontSize: 16,
   },
   emailText: {
     color: 'rgba(128, 128, 128, 1)',
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
     color: 'rgba(179, 80, 214, 1)',
     fontWeight: '700',
     marginBottom: 20,
+    fontSize: 16,
   },
   changePW: {
     width: 200,

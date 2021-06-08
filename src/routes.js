@@ -15,6 +15,7 @@ const routes = {
   score: 'score',
   topicprogress: 'topicprogress',
   testresults: 'testresults',
+  pwiniside: 'pwinside',
 };
 
 export default routes;

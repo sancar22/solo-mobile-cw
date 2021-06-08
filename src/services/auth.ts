@@ -71,12 +71,33 @@ const AuthService = () => {
     );
   };
 
+  const changePasswordInApp = async (
+    jwt: string | null,
+    oldPassword: string,
+    password: string,
+    passwordRepeat: string,
+  ): Promise<CustomResponse<any>> => {
+    const authConfig = {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+        'Content-Type': 'application/json',
+      },
+    };
+    return await customFetch<any>(
+      'auth/changePW',
+      'POST',
+      {oldPassword, password, passwordRepeat},
+      authConfig,
+    );
+  };
+
   return {
     handleLogin,
     handleRegister,
     handlePWForgot,
     handleCodeSubmit,
     handlePWChange,
+    changePasswordInApp,
   };
 };
 

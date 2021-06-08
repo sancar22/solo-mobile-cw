@@ -29,7 +29,9 @@ const SettingsView: React.FC<Props> = ({navigation}): JSX.Element => {
     });
   };
 
-  const handleChangePassword = () => {};
+  const handleChangePassword = () => {
+    navigation.navigate(routes.pwiniside);
+  };
   return (
     <Container verticalHeight={0}>
       <Header logoSrc={Logo} backArrow={false} defaultMarginBottom={0} />

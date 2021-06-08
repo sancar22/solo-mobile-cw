@@ -45,6 +45,7 @@ import QuestionsView from './src/screens/questions/questions';
 import ScoreView from './src/screens/score/score';
 import TopicProgressView from './src/screens/topicprogress/topicprogress';
 import TestResultsView from './src/screens/testresults/testresults';
+import PWInsideView from './src/screens/pwinside/pwinside';
 
 import axios from 'axios';
 import {URL} from './src/constants/ngrok';
@@ -226,6 +227,7 @@ const App = () => {
                 name={routes.testresults}
                 component={TestResultsView}
               />
+              <Stack.Screen name={routes.pwiniside} component={PWInsideView} />
             </Stack.Navigator>
           </StateContext.Provider>
         </StatusContext.Provider>
