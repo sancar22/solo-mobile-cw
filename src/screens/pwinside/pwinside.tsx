@@ -32,7 +32,6 @@ const PWInsideView: React.FC<Props> = ({navigation}): JSX.Element => {
       password,
       newPassword,
     );
-    console.log(serverRes.data, error);
     hideProgressDialog();
     if (!error) {
       Alert.alert(serverRes.data);

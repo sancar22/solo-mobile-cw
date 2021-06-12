@@ -14,8 +14,6 @@ type Props = {
 const ScoreView: React.FC<Props> = ({navigation, route}): JSX.Element => {
   const {scoreInfo} = route.params;
 
-  console.log(scoreInfo);
-
   const handleHomeNavigation = () => {
     navigation.reset({
       index: 0,

@@ -11,7 +11,6 @@ const customFetch = <T>(
   const reqOptions: ReqOptions = {
     POST: async function () {
       try {
-        console.log(`${URL}/${path}`, body, config);
         const serverRes = await axios.post(
           `${URL}/${path}`,
           JSON.stringify(body),
