@@ -18,34 +18,29 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 30,
-    marginBottom: 20,
+    marginBottom: 40,
   },
-  courseName: {
+  containerStyles: {
+    backgroundColor: 'rgba(245, 245, 245, 1)',
+    borderRadius: 20,
+  },
+  inputStylesCont: {
+    borderBottomWidth: 0,
+    color: 'rgba(128, 128, 128, 1)',
+  },
+  enrollBtn: {
+    backgroundColor: '#50D65D',
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    borderRadius: 30,
+    paddingHorizontal: 40,
+    paddingVertical: 15,
+    marginTop: 50,
+  },
+  enrollBtnTxt: {
+    color: colors.white,
+    fontSize: 18,
     fontWeight: 'bold',
-    fontSize: 20,
-    textTransform: 'uppercase',
-    color: 'rgba(128, 128, 128, 1)',
-  },
-  details: {
-    color: 'rgba(128, 128, 128, 1)',
-    fontWeight: '300',
-  },
-  detailsContainer: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    flex: 1,
-    paddingLeft: 15,
-  },
-  completion: {
-    color: 'rgba(128, 128, 128, 1)',
-  },
-  noContent: {
-    fontSize: 30,
-    alignSelf: 'center',
-    color: 'gray',
-    fontWeight: 'bold',
-    textAlignVertical: 'center',
-    textAlign: 'center',
   },
 });
 export default styles;
