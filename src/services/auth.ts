@@ -84,7 +84,7 @@ const AuthService = () => {
       },
     };
     return await customFetch<any>(
-      'auth/changePW',
+      'auth/changePWInApp',
       'POST',
       {oldPassword, password, passwordRepeat},
       authConfig,
