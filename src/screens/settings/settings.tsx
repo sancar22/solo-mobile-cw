@@ -7,7 +7,6 @@ import routes from '../../routes';
 import {StatusContext, StateContext} from '../../services/context';
 import {StateCtx, StatusCtx} from '../../interfaces';
 import Header from '../../components/header/header';
-import Logo from '../../assets/icons/back-arrow.png';
 
 type Props = {
   navigation: any;
@@ -34,7 +33,7 @@ const SettingsView: React.FC<Props> = ({navigation}): JSX.Element => {
   };
   return (
     <Container verticalHeight={0}>
-      <Header logoSrc={Logo} backArrow={false} defaultMarginBottom={0} />
+      <Header backArrow={false} defaultMarginBottom={0} />
       <View style={styles.purpleView}>
         <Text style={styles.nameColor}>{user.name}</Text>
       </View>

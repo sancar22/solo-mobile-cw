@@ -9,7 +9,6 @@ import CourseService from '../../services/courses';
 import routes from '../../routes';
 import ProgressBar from '../../components/progressBar';
 import Header from '../../components/header/header';
-import Logo from '../../assets/icons/back-arrow.png';
 type Props = {
   navigation: any;
 };
@@ -51,7 +50,7 @@ const CourseProgressView: React.FC<Props> = ({navigation}): JSX.Element => {
   }, []);
   return (
     <Container verticalHeight={0}>
-      <Header logoSrc={Logo} backArrow={false} />
+      <Header backArrow={false} />
       <View style={styles.coursesContainer}>
         <Text style={styles.title}>Course Progress</Text>
         {userCourses.length > 0 ? (

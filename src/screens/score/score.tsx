@@ -4,7 +4,6 @@ import React from 'react';
 import Container from '../../components/container/container';
 import styles from './styles';
 import routes from '../../routes';
-import Logo from '../../assets/icons/back-arrow.png';
 import Header from '../../components/header/header';
 
 type Props = {
@@ -26,7 +25,7 @@ const ScoreView: React.FC<Props> = ({navigation, route}): JSX.Element => {
 
   return (
     <Container verticalHeight={0}>
-      <Header backArrow={false} logoSrc={Logo} />
+      <Header backArrow={false} />
       <View style={styles.scoreContainer}>
         <Text style={styles.title}>Test Summary: </Text>
         <Text style={styles.scoreInfo}>{scoreInfo.message}</Text>

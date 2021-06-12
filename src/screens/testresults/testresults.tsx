@@ -3,7 +3,6 @@ import React, {useContext} from 'react';
 import Container from '../../components/container/container';
 import styles from './styles';
 import Header from '../../components/header/header';
-import Logo from '../../assets/icons/back-arrow.png';
 import {StateCtx} from '../../interfaces';
 import {StateContext} from '../../services/context';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -32,7 +31,7 @@ const TestResultsView: React.FC<Props> = ({navigation}): JSX.Element => {
 
   return (
     <Container verticalHeight={0}>
-      <Header logoSrc={Logo} onPressBack={navigation.goBack} />
+      <Header onPressBack={navigation.goBack} />
       <View style={styles.testResultContainer}>
         <Text style={styles.title}>Test Review: {currentTopicResult.name}</Text>
         {currentTopicResult.responses.map((response: any, index: number) => {

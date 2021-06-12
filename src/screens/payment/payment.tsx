@@ -10,7 +10,6 @@ import {
 import Container from '../../components/container/container';
 import styles from './styles';
 import Header from '../../components/header/header';
-import Logo from '../../assets/icons/back-arrow.png';
 import {alertWithOptions} from '../../helperFunctions/index';
 import {CreditCardInput} from 'react-native-credit-card-input';
 import {StatusContext, StateContext} from '../../services/context';
@@ -93,7 +92,7 @@ const PaymentView: React.FC<Props> = ({navigation, route}): JSX.Element => {
 
   return (
     <Container verticalHeight={0}>
-      <Header onPressBack={navigation.goBack} logoSrc={Logo} />
+      <Header onPressBack={navigation.goBack} />
       <Text style={styles.welcomeText}>Payment</Text>
       <View style={styles.formContainer}>
         <Text style={styles.priceTag}>

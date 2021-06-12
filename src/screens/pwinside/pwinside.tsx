@@ -9,7 +9,6 @@ import AuthService from '../../services/auth';
 import routes from '../../routes';
 import ProgressBar from '../../components/progressBar';
 import Header from '../../components/header/header';
-import Logo from '../../assets/icons/back-arrow.png';
 type Props = {
   navigation: any;
 };
@@ -55,7 +54,7 @@ const PWInsideView: React.FC<Props> = ({navigation}): JSX.Element => {
 
   return (
     <Container verticalHeight={0}>
-      <Header logoSrc={Logo} onPressBack={navigation.goBack} />
+      <Header onPressBack={navigation.goBack} />
       <View style={styles.coursesContainer} />
     </Container>
   );

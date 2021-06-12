@@ -8,7 +8,7 @@ import * as SecureStore from 'expo-secure-store';
 import TopicService from '../../services/topics';
 import routes from '../../routes';
 import Header from '../../components/header/header';
-import Logo from '../../assets/icons/back-arrow.png';
+
 const CheckIcon = require('../../assets/images/check.png');
 type Props = {
   navigation: any;
@@ -58,7 +58,7 @@ const TopicProgressView: React.FC<Props> = ({
   }, []);
   return (
     <Container verticalHeight={0}>
-      <Header logoSrc={Logo} onPressBack={navigation.goBack} />
+      <Header onPressBack={navigation.goBack} />
       <View style={styles.coursesContainer}>
         <Text style={styles.title}>{courseName}</Text>
         {userCompletedTopics.length > 0 ? (

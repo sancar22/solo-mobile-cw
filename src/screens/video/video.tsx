@@ -4,7 +4,6 @@ import React from 'react';
 import Container from '../../components/container/container';
 import styles from './styles';
 import routes from '../../routes';
-import Logo from '../../assets/icons/back-arrow.png';
 import Header from '../../components/header/header';
 import RNVideo from './RNVideo';
 
@@ -22,11 +21,7 @@ const VideoView: React.FC<Props> = ({navigation, route}): JSX.Element => {
 
   return (
     <Container verticalHeight={0}>
-      <Header
-        onPressBack={navigation.goBack}
-        logoSrc={Logo}
-        defaultMarginBottom={0}
-      />
+      <Header onPressBack={navigation.goBack} defaultMarginBottom={0} />
       <View style={styles.body}>
         <TouchableOpacity>
           <RNVideo uri={videoURL} />

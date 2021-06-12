@@ -1,13 +1,14 @@
 import React from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
-import Logo from '../../assets/icons/back-arrow.png';
+const Logo = require('../../assets/images/DEVcademy.png');
+const back = require('../../assets/icons/back-arrow.png');
 
 import styles from './styles';
 
 export type Props = {
   backArrow?: boolean;
   onPressBack?: () => void;
-  logoSrc: string;
+  logoSrc?: string;
   defaultMarginBottom?: number;
 };
 
@@ -25,10 +26,10 @@ const Header: React.FC<Props> = ({
       }}>
       {backArrow && (
         <TouchableOpacity onPress={onPressBack}>
-          <Image style={{width: 40, height: 30}} source={logoSrc} />
+          <Image style={{width: 40, height: 30}} source={back} />
         </TouchableOpacity>
       )}
-      <Image source={logoSrc} />
+      <Image style={{width: 180}} source={logoSrc} />
     </View>
   );
 };

@@ -4,7 +4,6 @@ import React, {useEffect, useState, useContext} from 'react';
 import Container from '../../components/container/container';
 import styles from './styles';
 import routes from '../../routes';
-import Logo from '../../assets/icons/back-arrow.png';
 import Header from '../../components/header/header';
 import TopicsService from '../../services/topics';
 import {StateContext, StatusContext} from '../../services/context';
@@ -59,7 +58,7 @@ const TopicsView: React.FC<Props> = ({navigation, route}): JSX.Element => {
 
   return (
     <Container verticalHeight={0}>
-      <Header onPressBack={navigation.goBack} logoSrc={Logo} />
+      <Header onPressBack={navigation.goBack} />
       {topics.length > 0 ? (
         topics.map(topic => {
           const {name, description, completed, _id, videoURL} = topic;

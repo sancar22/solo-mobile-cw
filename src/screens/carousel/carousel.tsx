@@ -13,7 +13,6 @@ import routes from '../../routes';
 import * as SecureStore from 'expo-secure-store';
 import Dots from 'react-native-dots-pagination';
 import Carousel from 'react-native-snap-carousel';
-import Logo from '../../assets/icons/back-arrow.png';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {StatusCtx, StateCtx} from '../../interfaces';
 import {StateContext, StatusContext} from '../../services/context';
@@ -130,7 +129,7 @@ const CarouselView: React.FC<Props> = ({navigation, route}): JSX.Element => {
 
   return (
     <Container verticalHeight={0}>
-      <Header onPressBack={navigation.goBack} logoSrc={Logo} />
+      <Header onPressBack={navigation.goBack} />
       <Text style={styles.welcomeText}>Courses</Text>
       {carouselItems.length > 0 && (
         <>

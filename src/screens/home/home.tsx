@@ -15,7 +15,7 @@ import routes from '../../routes';
 import styles from './styles';
 import Header from '../../components/header/header';
 import {SearchBar} from 'react-native-elements';
-import Logo from '../../assets/icons/back-arrow.png';
+
 import {alertWithOptions} from '../../helperFunctions/index';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -149,7 +149,7 @@ const HomeView: React.FC<Props> = ({navigation}): JSX.Element => {
   return (
     <Container verticalHeight={0}>
       <View style={styles.body}>
-        <Header logoSrc={Logo} backArrow={false} />
+        <Header backArrow={false} />
         <Text style={styles.welcomeText}>Welcome, {user.name}!</Text>
         <View style={styles.filterContainer}>
           <Text style={styles.filterText}>Filter by:</Text>
