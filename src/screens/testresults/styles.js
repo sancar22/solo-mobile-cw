@@ -55,5 +55,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
   },
+  scoreResults: {
+    marginBottom: 20,
+  },
 });
 export default styles;

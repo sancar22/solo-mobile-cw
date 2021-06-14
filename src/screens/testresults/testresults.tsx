@@ -29,11 +29,18 @@ const TestResultsView: React.FC<Props> = ({navigation}): JSX.Element => {
     }
   };
 
+  console.log(currentTopicResult);
+
   return (
     <Container verticalHeight={0}>
       <Header onPressBack={navigation.goBack} />
       <View style={styles.testResultContainer}>
         <Text style={styles.title}>Test Review: {currentTopicResult.name}</Text>
+        <Text style={styles.scoreResults}>
+          You got {currentTopicResult.correctQuestions} out of{' '}
+          {currentTopicResult.totalQuestions} correct answers, which gives you a
+          score of {currentTopicResult.score.$numberDecimal}%.
+        </Text>
         {currentTopicResult.responses.map((response: any, index: number) => {
           return (
             <View key={index} style={styles.questionContainer}>
@@ -59,6 +66,7 @@ const TestResultsView: React.FC<Props> = ({navigation}): JSX.Element => {
                     style={{
                       ...styles.choices,
                       backgroundColor: getColor(response, choiceIdx),
+                      flexShrink: 1,
                     }}>
                     <Text>{choice.name}</Text>
                   </View>

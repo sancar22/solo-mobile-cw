@@ -128,13 +128,15 @@ const QuestionsView: React.FC<Props> = ({navigation, route}): JSX.Element => {
                 </Text>
                 {question.question}
               </Text>
-              <RadioForm
-                radio_props={radio_props}
-                initial={0}
-                onPress={(value: number) => {
-                  handleChoiceSelection(value, questionIdx);
-                }}
-              />
+              <View style={{flexShrink: 1, width: '90%'}}>
+                <RadioForm
+                  radio_props={radio_props}
+                  initial={0}
+                  onPress={(value: number) => {
+                    handleChoiceSelection(value, questionIdx);
+                  }}
+                />
+              </View>
             </View>
           );
         })}

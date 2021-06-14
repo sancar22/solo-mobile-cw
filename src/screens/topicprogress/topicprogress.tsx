@@ -70,7 +70,7 @@ const TopicProgressView: React.FC<Props> = ({
                 style={styles.topicContainer}>
                 <View style={styles.imageTitleContainer}>
                   <Image source={CheckIcon} style={styles.checkIconImage} />
-                  <View>
+                  <View style={{flexShrink: 1}}>
                     <Text style={styles.topicName}>{topic.name}</Text>
                     <Text style={styles.topicDescription}>
                       {topic.description}

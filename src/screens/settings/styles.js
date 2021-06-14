@@ -13,12 +13,14 @@ const styles = StyleSheet.create({
     height: hp('40%'),
     alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 20,
   },
   nameColor: {
     color: 'white',
     fontWeight: '500',
     fontSize: 30,
     textTransform: 'capitalize',
+    textAlign: 'center',
   },
   emailContainer: {
     color: 'rgba(128, 128, 128, 1)',

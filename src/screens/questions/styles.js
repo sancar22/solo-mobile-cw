@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
   },
   questionChoicesContainer: {
     marginBottom: 30,
+    flexShrink: 1,
   },
   wholeQuestion: {
     marginBottom: 20,
