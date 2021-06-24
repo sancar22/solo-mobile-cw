@@ -19,10 +19,9 @@ import {
   StateContext,
   initialState,
 } from './src/services/context';
-import {VISIBLE, HIDDEN, USER, TEST_RESULTS} from './src/constants/index';
+import {VISIBLE, HIDDEN, USER, TEST_RESULTS} from './src/constants';
 
 import Orientation from 'react-native-orientation';
-import * as SecureStore from 'expo-secure-store';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -47,9 +46,8 @@ import TopicProgressView from './src/screens/topicprogress/topicprogress';
 import TestResultsView from './src/screens/testresults/testresults';
 import PWInsideView from './src/screens/pwinside/pwinside';
 
-import axios from 'axios';
-import {URL} from './src/constants/ngrok';
 import colors from './src/constants/colors';
+import {Params, Topic, User} from './src/interfaces';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -77,10 +75,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeTabs = props => {
+const HomeTabs = (props: {navigation: any}) => {
   const {navigation} = props;
 
-  const handleUrl = (url = '') => {
+  const handleUrl = (url: string | null = '') => {
     if (!url) {
       return;
     }
@@ -94,7 +92,7 @@ const HomeTabs = props => {
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
     Orientation.lockToPortrait();
-    Linking.getInitialURL().then(url => handleUrl(url));
+    Linking.getInitialURL().then((url: string | null) => handleUrl(url));
     Linking.addEventListener('url', e => handleUrl(e.url));
     return () => {
       Linking.removeAllListeners('url');
@@ -151,17 +149,20 @@ const App = () => {
 
   const statusContext = useMemo(
     () => ({
+      visible: false,
+      label: '',
       showProgressDialog: (label = '') =>
         dispatchStatus({type: VISIBLE, label}),
-      hideProgressDialog: () => dispatchStatus({type: HIDDEN}),
+      hideProgressDialog: () => dispatchStatus({type: HIDDEN, label: ''}),
     }),
     [],
   );
 
   const stateContext = useMemo(
     () => ({
-      updateUser: user => dispatchState({type: USER, user}),
-      updateCurrentTopic: currentTopicResult =>
+      updateUser: (user: User) => dispatchState({type: USER, user}),
+      // TODO - possibly wrong topic type
+      updateCurrentTopic: (currentTopicResult: Topic) =>
         dispatchState({type: TEST_RESULTS, currentTopicResult}),
       ...state,
     }),
@@ -190,7 +191,10 @@ const App = () => {
     initializeApp();
   }, []);
 
-  const onStateChange = async params => {
+  const onStateChange = async (params: Params | undefined) => {
+    if (!params) {
+      return;
+    }
     const currentRouteName = params.routes[params.index].name.toUpperCase();
     if (currentRouteName !== previousRouteName) {
       setPreviousRouteName(currentRouteName);
