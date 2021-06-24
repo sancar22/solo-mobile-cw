@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+<<<<<<< HEAD
+=======
+   <FileRef
+      location = "self:">
+   </FileRef>
+>>>>>>> 5a5a9264a349731d6602f458baf379fa08442e1a
 </Workspace>

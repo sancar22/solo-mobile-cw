@@ -7,7 +7,13 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "link": "react-native link",
+    "clear-cache" : "npm run clear-xcode-cache && watchman watch-del-all && rm -rf $TMPDIR/react-* && npm cache verify && rm -rf node_modules/ && npm run clear-npm-pod-cache && rm -rf ios/build/ && cd android && ./gradlew clean && cd .. && npm run start-no-cache",
+    "clear-xcode-cache": "cd ios && bash ../resetXcode.sh && cd../",
+    "clear-npm-pod-cache": "rm -rf ios/Podfile.lock && rm -rf package-lock.json && npm run npm-pod-install",
+    "npm-pod-install": "npm install && npm run pod-install",
+    "pod-install": "cd ios/ && pod install && cd .."
   },
   "dependencies": {
     "@codler/react-native-keyboard-aware-scroll-view": "^1.0.1",
