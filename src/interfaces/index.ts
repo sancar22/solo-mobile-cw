@@ -1,3 +1,5 @@
+import {ParamListBase, RouteProp} from '@react-navigation/native';
+
 export interface StatusCtx {
   visible: boolean;
   label: string;
@@ -23,7 +25,7 @@ export interface StateCtx {
 }
 
 export interface InitialState {
-  user: any;
+  user: Partial<User>;
   currentTopicResult: any;
 }
 
@@ -43,4 +45,34 @@ export interface CustomAPIPromise<T> {
 
 export interface ReqOptions {
   [key: string]: () => Promise<{serverRes: any; error: boolean}>;
+}
+
+export interface Params {
+  key: string;
+  index: number;
+  routeNames: string[];
+  history?: unknown[] | undefined;
+  routes: RouteProp<ParamListBase, string>[];
+  type: string;
+  stale: false;
+}
+
+export interface User {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  verified: boolean;
+  stripeID: string;
+  forgotPWToken: string;
+}
+
+export interface Topic {
+  _id: string;
+  enabled: Boolean;
+  courseID: string;
+  name: string;
+  description: string;
+  videoURL: string;
+  questions: any[]; //TODO interface the objects in here
 }

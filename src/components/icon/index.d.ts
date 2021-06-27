@@ -3,7 +3,7 @@ import {ImageProps} from 'react-native';
 
 declare class Icon extends React.Component<IconProps, any> {}
 
-interface IconProps extends ImageProps {
+interface IconProps extends Omit<ImageProps, 'source'> {
   name: 'cog' | 'books' | 'search';
   /**
    * The default value is 20.
